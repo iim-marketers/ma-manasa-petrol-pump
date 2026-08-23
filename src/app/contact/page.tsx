@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Clock, CreditCard, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, CreditCard, Mail, MapPin, Navigation, Phone } from "lucide-react";
 
-import { Band, Container } from "@/components/container";
+import { Container, Section, SectionHead } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";
+import { IconChip } from "@/components/icons";
 import { LinkButton } from "@/components/link-button";
 import { MapEmbed } from "@/components/map-embed";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { photos, site } from "@/lib/site";
+import { businessHours, paymentMethods, photos, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -26,7 +27,7 @@ const rows = [
     icon: Phone,
     label: "Phone",
     value: site.phone,
-    note: "",
+    note: site.altPhone,
     href: site.phoneHref,
   },
   {
@@ -37,64 +38,62 @@ const rows = [
     href: `mailto:${site.email}`,
   },
   { icon: Clock, label: "Hours", value: site.hours, note: site.hoursNote },
-  { icon: CreditCard, label: "Payments", value: site.payments, note: null },
+  {
+    icon: CreditCard,
+    label: "Payments",
+    value: paymentMethods.join(" · "),
+    note: null,
+  },
 ];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        plate="Find us"
-        title={
-          <>
-            Pull in at
-            <br />
-            {site.locality}.
-          </>
-        }
+        crumb="Contact Us"
+        eyebrow="Get in touch"
+        title={`Pull in at ${site.locality}`}
         lede={`We are on the ${site.highway} stretch at ${site.locality}, close to Kalyani More. Entry from both directions of the highway, and somebody at the island whatever the hour.`}
         image={photos.building}
         imageAlt=""
       />
 
-      <Band className="bg-paper">
+      <Section tone="surface">
         <Container className="grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
           <Reveal>
-            <span className="plate">Get in touch</span>
-            <h2 className="h-md mt-5">Everything you need to reach us.</h2>
+            <span className="t-eyebrow mb-3">Reach us</span>
+            <h2 className="t-h2">Everything you need to get here</h2>
 
-            <dl className="mt-7 border-t border-hairline">
+            <dl className="mt-7 space-y-3">
               {rows.map((row) => (
-                <div
-                  key={row.label}
-                  className="grid gap-x-4 gap-y-1 border-b border-hairline py-4 sm:grid-cols-[7rem_1fr]"
-                >
-                  <dt className="flex items-center gap-2 pt-0.5 font-display text-[0.67rem] font-extrabold tracking-[0.15em] text-ink-mute uppercase">
-                    <row.icon
-                      className="size-3.5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    {row.label}
-                  </dt>
-                  <dd>
-                    {row.href ? (
-                      <a
-                        href={row.href}
-                        className="block font-display text-[1.03rem] font-extrabold tracking-[-0.01em] hover:text-hp-blue"
-                      >
-                        {row.value}
-                      </a>
-                    ) : (
-                      <b className="block font-display text-[1.03rem] font-extrabold tracking-[-0.01em]">
-                        {row.value}
-                      </b>
-                    )}
-                    {row.note ? (
-                      <small className="mt-0.5 block text-[0.84rem] text-ink-mute">
-                        {row.note}
-                      </small>
-                    ) : null}
-                  </dd>
+                <div key={row.label} className="card-base flex gap-3.5 p-5">
+                  <IconChip size="sm" tone="brand">
+                    <row.icon aria-hidden="true" />
+                  </IconChip>
+                  <div className="min-w-0">
+                    <dt className="font-display text-[0.72rem] font-bold tracking-[0.1em] text-ink-3 uppercase">
+                      {row.label}
+                    </dt>
+                    <dd className="mt-1">
+                      {row.href ? (
+                        <a
+                          href={row.href}
+                          className="block font-display text-[1rem] font-bold text-ink transition-colors hover:text-brand-600"
+                        >
+                          {row.value}
+                        </a>
+                      ) : (
+                        <b className="block font-display text-[1rem] font-bold text-ink">
+                          {row.value}
+                        </b>
+                      )}
+                      {row.note ? (
+                        <small className="mt-0.5 block text-[0.84rem] text-ink-2">
+                          {row.note}
+                        </small>
+                      ) : null}
+                    </dd>
+                  </div>
                 </div>
               ))}
             </dl>
@@ -103,13 +102,18 @@ export default function ContactPage() {
               <LinkButton
                 href={site.mapsLink}
                 external
-                variant="hp"
-                size="sign"
+                variant="flame"
+                size="pill"
               >
-                <MapPin aria-hidden="true" />
+                <Navigation aria-hidden="true" />
                 Get directions
               </LinkButton>
-              <LinkButton href={site.phoneHref} variant="hpOutline" size="sign">
+              <LinkButton
+                href={site.phoneHref}
+                variant="soft"
+                size="pill"
+                className="border"
+              >
                 <Phone aria-hidden="true" />
                 Call the pump
               </LinkButton>
@@ -120,21 +124,59 @@ export default function ContactPage() {
             <EnquiryForm />
           </Reveal>
         </Container>
-      </Band>
+      </Section>
 
-      <Band className="bg-concrete">
+      <Section tone="muted">
         <Container>
-          <Reveal className="mb-7">
-            <span className="plate plate-amber">On the map</span>
-            <h2 className="h-md mt-5">
-              {site.locality}, {site.highway}.
-            </h2>
-          </Reveal>
-          <Reveal delay={60}>
-            <MapEmbed />
-          </Reveal>
+          <SectionHead
+            eyebrow="On the map"
+            title={`${site.locality}, ${site.highway}`}
+            lede="Right on the highway with entry from both directions — no detour into town."
+          />
+
+          <div className="grid gap-4 lg:grid-cols-[1.45fr_0.55fr]">
+            <Reveal>
+              <MapEmbed />
+            </Reveal>
+
+            <Reveal delay={60}>
+              <div className="card-base h-full overflow-hidden">
+                <div className="border-b border-line p-5">
+                  <h3 className="t-h3">Opening hours</h3>
+                  <p className="mt-1 text-[0.84rem] text-ink-2">
+                    {site.hoursNote}
+                  </p>
+                </div>
+                <table className="w-full text-left">
+                  <caption className="sr-only">Opening hours by day</caption>
+                  <tbody>
+                    {businessHours.map((row) => (
+                      <tr key={row.day} className="border-b border-line/70">
+                        <th
+                          scope="row"
+                          className="px-5 py-2.5 text-[0.88rem] font-medium text-ink-2"
+                        >
+                          {row.day}
+                        </th>
+                        <td className="px-5 py-2.5 text-right text-[0.85rem] tabular-nums text-ink">
+                          {row.opens} – {row.closes}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="flex items-center gap-2 px-5 py-4 text-[0.84rem] font-semibold text-leaf-700">
+                  <i
+                    className="animate-dot size-1.5 rounded-full bg-leaf-500"
+                    aria-hidden="true"
+                  />
+                  Open right now
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </Container>
-      </Band>
+      </Section>
     </>
   );
 }

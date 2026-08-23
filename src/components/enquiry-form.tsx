@@ -21,11 +21,11 @@ import { cn } from "@/lib/utils";
 type Errors = { name?: string; phone?: string };
 
 const fieldClass =
-  "h-auto w-full rounded-[4px] border border-hairline bg-paper px-3.5 py-3 text-[0.94rem] " +
-  "focus-visible:border-hp-blue focus-visible:ring-3 focus-visible:ring-hp-blue/15";
+  "h-auto w-full rounded-xl border border-line bg-white px-4 py-3 text-[0.94rem] " +
+  "transition-colors focus-visible:border-brand-400 focus-visible:ring-3 focus-visible:ring-brand-400/18";
 
 const labelClass =
-  "mb-1.5 block font-display text-[0.65rem] font-extrabold tracking-[0.14em] text-ink-mute uppercase";
+  "mb-1.5 block font-display text-[0.78rem] font-semibold text-ink-2";
 
 export function EnquiryForm({ className }: { className?: string }) {
   const [topic, setTopic] = useState<string>(enquiryTopics[0]);
@@ -65,14 +65,14 @@ export function EnquiryForm({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "rounded-lg border border-hairline bg-concrete p-6 sm:p-8",
+        "card-base p-6 sm:p-8",
         className,
       )}
     >
       <h3 className="font-display text-[1.32rem] font-extrabold tracking-[-0.02em]">
         Send an enquiry
       </h3>
-      <p className="mt-1.5 mb-6 text-[0.89rem] text-ink-mute">
+      <p className="mt-1.5 mb-6 text-[0.89rem] text-ink-2">
         Bulk diesel, fleet accounts, PUC timings or anything else — tell us what you need
         and we will call you back.
       </p>
@@ -154,7 +154,7 @@ export function EnquiryForm({ className }: { className?: string }) {
           />
         </div>
 
-        <Button type="submit" variant="hp" size="sign" className="w-full">
+        <Button type="submit" variant="flame" size="pill" className="w-full">
           <Send aria-hidden="true" />
           Send enquiry
         </Button>
@@ -162,7 +162,7 @@ export function EnquiryForm({ className }: { className?: string }) {
         {sent ? (
           <p
             role="status"
-            className="flex items-start gap-2.5 rounded-[4px] bg-hp-blue px-4 py-3.5 text-[0.89rem] font-semibold text-white"
+            className="flex items-start gap-2.5 rounded-xl bg-brand-600 px-4 py-3.5 text-[0.89rem] font-semibold text-white"
           >
             <CheckCircle2 className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
             {sent}

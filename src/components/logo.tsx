@@ -26,8 +26,8 @@ export function LogoMark({
   return (
     <span
       className={cn(
-        "relative block shrink-0 overflow-hidden rounded-[4px]",
-        plate && "bg-asphalt px-1 py-0.5",
+        "relative block shrink-0 overflow-hidden rounded-lg",
+        plate && "bg-brand-900 px-1 py-0.5",
         className,
       )}
       style={{ width: plate ? width + 8 : width, height: size }}

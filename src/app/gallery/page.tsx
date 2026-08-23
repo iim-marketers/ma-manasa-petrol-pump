@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Band, Container } from "@/components/container";
+import { Container, Section } from "@/components/container";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { Photo } from "@/components/photo";
@@ -11,55 +11,48 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Photographs of the forecourt, fuel islands, HP Power dispensers and the online CNG station at Ma Manasa Auto Fuel Service, NH-12 Muragachha.",
-};
-
-/** Column and height rules per tile shape, tuned for a 6-column grid. */
-const spanClass: Record<string, string> = {
-  wide: "col-span-2 h-52 sm:col-span-4 sm:h-72 lg:h-[22rem]",
-  tall: "col-span-2 h-52 sm:col-span-2 sm:h-72 lg:h-[22rem]",
-  normal: "col-span-1 h-36 sm:col-span-2 sm:h-52 lg:h-56",
+    "Photographs of the forecourt, fuel islands, HP Power dispensers, the online CNG station and the HP e-Charge bay at Ma Manasa Auto Fuel Service, NH-12 Muragachha.",
 };
 
 export default function GalleryPage() {
   return (
     <>
       <PageHero
-        plate="Around the pump"
-        title={
-          <>
-            Have a look
-            <br />
-            before you pull in.
-          </>
-        }
-        lede="The forecourt, the islands, the CNG station and the building — photographed at the pump, exactly as they are."
-        image={photos.forecourt}
+        crumb="Gallery"
+        eyebrow="Gallery"
+        title="Have a look before you pull in"
+        lede="The forecourt, the islands, the CNG bay, the charger and the PUC booth — photographed at the pump, exactly as they are."
+        image={photos.canopy}
         imageAlt=""
       />
 
-      <Band className="bg-concrete">
+      <Section tone="surface">
         <Container>
-          <Reveal className="grid grid-cols-2 gap-3 sm:grid-cols-6">
+          {/* The lead tile takes a 2x2 block; the eight that follow fill the
+              remaining cells of the four-column grid exactly. */}
+          <Reveal className="grid grid-cols-2 gap-3 sm:auto-rows-[13rem] sm:grid-cols-4 lg:auto-rows-[15.5rem]">
             {gallery.map((tile, i) => (
               <Photo
-                key={tile.src}
+                key={tile.caption}
                 src={tile.src}
                 alt={tile.alt}
                 caption={tile.caption}
-                priority={i < 2}
+                priority={i < 3}
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
-                className={cn(spanClass[tile.span] ?? spanClass.normal)}
+                className={cn(
+                  "h-36 sm:h-auto",
+                  i === 0 && "col-span-2 h-52 sm:row-span-2",
+                )}
               />
             ))}
           </Reveal>
 
-          <p className="mt-8 text-center text-[0.85rem] text-ink-mute">
+          <p className="mt-8 text-center text-[0.86rem] text-ink-2">
             All photographs taken at {site.name}, {site.highway}{" "}
             {site.locality}.
           </p>
         </Container>
-      </Band>
+      </Section>
 
       <CtaBand
         title="The real thing is better."

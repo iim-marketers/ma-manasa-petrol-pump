@@ -1,4 +1,4 @@
-import { MapPin, Phone } from "lucide-react";
+import { Navigation, Phone } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { LinkButton } from "@/components/link-button";
@@ -15,28 +15,39 @@ export function CtaBand({
   secondary?: "contact" | "phone";
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-hp-blue text-white">
-      <div className="hazard-dark absolute inset-0 -z-10" aria-hidden="true" />
-
+    <section className="wash-brand text-white">
       <Container className="py-14 sm:py-16 lg:py-20">
         <Reveal className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className="h-lg max-w-[16ch]">{title}</h2>
-            <p className="mt-4 max-w-[52ch] text-white/80">{body}</p>
+            <h2 className="t-h2 max-w-[20ch] text-white">{title}</h2>
+            <p className="mt-3.5 max-w-[56ch] text-brand-100/85">{body}</p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <LinkButton href={site.mapsLink} external variant="hpWhite" size="sign">
-              <MapPin aria-hidden="true" />
+          <div className="flex shrink-0 flex-wrap gap-3">
+            <LinkButton
+              href={site.mapsLink}
+              external
+              variant="flame"
+              size="pill-lg"
+            >
+              <Navigation aria-hidden="true" />
               Get directions
             </LinkButton>
 
             {secondary === "contact" ? (
-              <LinkButton href="/contact" variant="hpLight" size="sign">
+              <LinkButton
+                href="/contact"
+                variant="onDarkSolid"
+                size="pill-lg"
+              >
                 Contact us
               </LinkButton>
             ) : (
-              <LinkButton href={site.phoneHref} variant="hpLight" size="sign">
+              <LinkButton
+                href={site.phoneHref}
+                variant="onDarkSolid"
+                size="pill-lg"
+              >
                 <Phone aria-hidden="true" />
                 Call the pump
               </LinkButton>
