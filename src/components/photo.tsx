@@ -2,10 +2,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-/**
- * Photo tile. Fills its container, so the parent must set a height or an
- * aspect ratio. Caption slides up on hover / focus.
- */
 export function Photo({
   src,
   alt,
@@ -13,6 +9,8 @@ export function Photo({
   className,
   sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
   priority = false,
+  position,
+  rounded = "card",
 }: {
   src: string;
   alt: string;
@@ -20,11 +18,16 @@ export function Photo({
   className?: string;
   sizes?: string;
   priority?: boolean;
+  /** CSS object-position — lets two tiles show different crops of one photo. */
+  position?: string;
+  rounded?: "card" | "none" | "lg";
 }) {
   return (
     <figure
       className={cn(
-        "group relative isolate overflow-hidden rounded-md bg-concrete-2",
+        "group relative isolate overflow-hidden bg-surface-3",
+        rounded === "card" && "rounded-card",
+        rounded === "lg" && "rounded-2xl",
         className,
       )}
     >
@@ -34,18 +37,12 @@ export function Photo({
         fill
         sizes={sizes}
         priority={priority}
-        className="object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.2,0.8,0.3,1)] group-hover:scale-[1.04]"
+        style={position ? { objectPosition: position } : undefined}
+        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.3,1)] group-hover:scale-[1.05]"
       />
 
       {caption ? (
-        <figcaption
-          className={cn(
-            "pointer-events-none absolute inset-x-0 bottom-0 z-[3] bg-gradient-to-t from-[rgb(7_12_17/0.85)] to-transparent",
-            "px-4 pt-9 pb-3.5 font-display text-[0.76rem] font-bold tracking-[0.1em] text-white uppercase",
-            "translate-y-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100",
-            "max-sm:translate-y-0 max-sm:opacity-100",
-          )}
-        >
+        <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 z-2 bg-linear-to-t from-[rgb(6_20_36/0.82)] via-[rgb(6_20_36/0.35)] to-transparent px-4 pt-10 pb-3.5 text-[0.82rem] font-medium text-white">
           {caption}
         </figcaption>
       ) : null}

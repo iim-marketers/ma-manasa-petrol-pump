@@ -1,87 +1,107 @@
-import { MapPin } from "lucide-react";
+import Image from "next/image";
+import { Check, Navigation, Phone } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { HpLockup } from "@/components/hp-logo";
 import { LinkButton } from "@/components/link-button";
-import { RateBoard } from "@/components/rate-board";
-import { site } from "@/lib/site";
+import { photos, services, site } from "@/lib/site";
 
-const lines = [
-  <>Fuel up.</>,
-  <>Charge up.</>,
-  <>
-    <em className="text-hp-blue not-italic">Chai</em>{" "}
-    <span className="text-hp-red">&amp;</span> go.
-  </>,
+const proof = [
+  "Four fuel grades",
+  "Online CNG station",
+  "HP e-Charge",
+  "Free air & washroom",
 ];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        className="hazard pointer-events-none absolute inset-0"
-        aria-hidden="true"
+    <section className="wash-brand relative isolate overflow-hidden text-white">
+      <Image
+        src={photos.forecourt}
+        alt={`The forecourt at ${site.name}, seen from the ${site.highway} entry`}
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover object-center"
       />
 
-      <Container className="relative grid items-center gap-10 pt-10 pb-12 sm:pt-14 lg:grid-cols-[1.12fr_0.88fr] ">
-        <div>
-          <HpLockup className="mb-4" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgb(4_24_47/0.94)_0%,rgb(4_24_47/0.86)_38%,rgb(4_24_47/0.62)_68%,rgb(4_24_47/0.5)_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(to_top,rgb(4_24_47/0.95),transparent)]"
+      />
 
-          <div>
-            <span className="plate">
-              <span className="text-[0.9rem] leading-none">▲</span>
-              {site.highway} · {site.landmark}
-            </span>
-          </div>
+      <Container className="relative py-12 lg:py-16">
+        <div className="max-w-184">
+          <HpLockup className="animate-fade-up mb-6" />
 
-          <h1 className="h-xl mt-5">
-            {lines.map((line, i) => (
-              <span key={i} className="block overflow-hidden">
-                <span
-                  className="animate-rise block whitespace-nowrap"
-                  style={{ animationDelay: `${0.05 + i * 0.1}s` }}
-                >
-                  {line}
-                </span>
-              </span>
-            ))}
+          <h1
+            className="t-display animate-fade-up text-white"
+            style={{ animationDelay: "0.06s" }}
+          >
+            Fuel, gas, charge and a cup of chai —{" "}
+            <span className="text-flame-500">one stop</span> on {site.highway}.
           </h1>
 
           <p
-            className="lede animate-fade mt-6"
-            style={{ animationDelay: "0.5s" }}
+            className="animate-fade-up mt-5 max-w-[56ch] text-[1.03rem] leading-relaxed text-brand-100/90"
+            style={{ animationDelay: "0.14s" }}
           >
-            An HP forecourt at {site.locality} with petrol, diesel, an online
-            CNG station and EV charging bays side by side — plus lubricants and
-            PUC certificates, and a Tea Junction counter on the way. The lights
-            stay on all night, so your run does not have to stop.
+            {site.name} is an authorised Hindustan Petroleum outlet at{" "}
+            {site.locality}, {site.landmark}. {services.length} services on one
+            forecourt, twelve amenities that cost you nothing, and the lights
+            stay on every hour of the year.
           </p>
+
+          <ul
+            className="animate-fade-up mt-7 grid max-w-160 gap-x-6 gap-y-2.5 sm:grid-cols-2"
+            style={{ animationDelay: "0.2s" }}
+          >
+            {proof.map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-2.5 text-[0.92rem] text-brand-100"
+              >
+                <Check
+                  className="size-4 shrink-0 text-flame-500"
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
 
           <div
-            className="animate-fade mt-8 flex flex-wrap gap-3"
-            style={{ animationDelay: "0.62s" }}
+            className="animate-fade-up mt-9 flex flex-wrap gap-3"
+            style={{ animationDelay: "0.26s" }}
           >
-            <LinkButton href={site.mapsLink} external variant="hp" size="sign">
-              <MapPin aria-hidden="true" />
+            <LinkButton
+              href={site.mapsLink}
+              external
+              variant="flame"
+              size="pill-lg"
+            >
+              <Navigation aria-hidden="true" />
               Get directions
             </LinkButton>
-            <LinkButton href="/services" variant="hpOutline" size="sign">
-              See what we stock
+            <LinkButton
+              href={site.phoneHref}
+              variant="onDark"
+              size="pill-lg"
+              className="border"
+            >
+              <Phone aria-hidden="true" />
+              {site.phone}
             </LinkButton>
           </div>
-
-          <p
-            className="animate-fade mt-6 text-[0.95rem] font-semibold text-hp-blue"
-            style={{ animationDelay: "0.74s" }}
-          >
-            <span lang="bn">{site.bengali}</span> — safe journey.
-          </p>
-        </div>
-
-        <div className="w-full">
-          <RateBoard />
         </div>
       </Container>
+
+      {/* The outlet card hangs past the band, so it needs the room. */}
+      <div className="h-10 lg:h-6" aria-hidden="true" />
     </section>
   );
 }

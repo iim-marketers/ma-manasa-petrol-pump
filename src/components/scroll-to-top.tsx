@@ -11,11 +11,11 @@ export function ScrollToTop({ className }: { className?: string }) {
       type="button"
       onClick={scrollToTop}
       className={cn(
-        "inline-flex items-center gap-2 rounded-[3px] border border-white/15 px-3.5 py-2 font-display text-[0.72rem] font-bold tracking-[0.12em] uppercase transition-colors hover:border-white/30 hover:bg-white/[0.07] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sodium",
+        "inline-flex shrink-0 items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-4 py-2.5 font-display text-[0.82rem] font-semibold transition-colors hover:border-white/45 hover:bg-white/12 hover:text-white",
         className,
       )}
     >
-      <ArrowUp aria-hidden="true" className="size-3.5" />
+      <ArrowUp aria-hidden="true" className="size-4" />
       Back to top
     </button>
   );

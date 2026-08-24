@@ -1,118 +1,207 @@
 import Link from "next/link";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Navigation, Phone } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { HpLockup } from "@/components/hp-logo";
+import { LinkButton } from "@/components/link-button";
 import { LogoMark } from "@/components/logo";
 import { ScrollToTop } from "@/components/scroll-to-top";
-import { nav, site } from "@/lib/site";
+import { nav, outletCategories, paymentMethods, services, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-asphalt pt-14 pb-7 text-[#8b98a3]">
-      <Container>
-        <div className="flex flex-col gap-8 border-b border-white/10 pb-8 lg:flex-row lg:items-start lg:justify-between">
-          <div className="flex items-start gap-4">
-            {/* No plate needed — the footer is already the dark surface the
-                cut-out artwork expects. */}
-            <LogoMark size={56} plate={false} alt="" />
-            <div>
-              <div className="font-display text-xl leading-tight font-black tracking-[-0.02em] text-white uppercase">
-                {site.name}
-              </div>
-              <div className="mt-1.5 text-[0.88rem] text-sodium">
-                {site.tagline} · {site.locality} · {site.highway} · {site.landmark}
+    <footer className="bg-brand-900 text-brand-100">
+      <Container className="py-14 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-12">
+          {/* Identity + contact */}
+          <div>
+            <div className="flex items-start gap-3.5">
+              <LogoMark size={48} plate={false} alt="" />
+              <div>
+                <div className="font-display text-[1.05rem] leading-tight font-extrabold tracking-[-0.02em] text-white">
+                  {site.name}
+                </div>
+                <div className="mt-1 text-[0.82rem] text-brand-200">
+                  {site.tagline}
+                </div>
               </div>
             </div>
+
+            <ul className="mt-6 space-y-3.5 text-[0.88rem]">
+              <ContactRow icon={MapPin}>
+                {site.addressLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </ContactRow>
+              <ContactRow icon={Phone}>
+                <a href={site.phoneHref} className="hover:text-white">
+                  {site.phone}
+                </a>
+                <a
+                  href={site.altPhoneHref}
+                  className="mt-0.5 block hover:text-white"
+                >
+                  {site.altPhone}
+                </a>
+              </ContactRow>
+              <ContactRow icon={Mail}>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="break-all hover:text-white"
+                >
+                  {site.email}
+                </a>
+              </ContactRow>
+              <ContactRow icon={Clock}>
+                {site.hours}
+                <span className="block text-brand-200">{site.hoursNote}</span>
+              </ContactRow>
+            </ul>
           </div>
 
-          <div className="flex flex-col items-start gap-4 lg:items-end">
-            <nav
-              className="flex flex-wrap gap-1 lg:justify-end"
-              aria-label="Footer"
-            >
-              {nav.map((item) => (
+          {/* Pages */}
+          <FooterColumn title="Pages">
+            {nav.map((item) => (
+              <li key={item.href}>
                 <Link
-                  key={item.href}
                   href={item.href}
-                  className="rounded-[3px] px-3 py-2 font-display text-[0.75rem] font-bold tracking-[0.12em] uppercase transition-colors hover:bg-white/[0.07] hover:text-white"
+                  className="transition-colors hover:text-white"
                 >
                   {item.label}
                 </Link>
+              </li>
+            ))}
+          </FooterColumn>
+
+          {/* Services */}
+          <FooterColumn title="Services">
+            {services.slice(0, 7).map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services#${service.slug}`}
+                  className="transition-colors hover:text-white"
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </FooterColumn>
+
+          {/* Actions + payments */}
+          <div>
+            <FooterHeading>Plan your stop</FooterHeading>
+            <div className="mt-4 flex flex-wrap gap-2.5">
+              <LinkButton
+                href={site.mapsLink}
+                external
+                variant="flame"
+                size="pill-sm"
+              >
+                <Navigation aria-hidden="true" />
+                Directions
+              </LinkButton>
+              <LinkButton
+                href={site.phoneHref}
+                variant="onDark"
+                size="pill-sm"
+                className="border"
+              >
+                <Phone aria-hidden="true" />
+                Call
+              </LinkButton>
+            </div>
+
+            <FooterHeading className="mt-8">We accept</FooterHeading>
+            <ul className="mt-3 flex flex-wrap gap-1.5">
+              {paymentMethods.map((method) => (
+                <li
+                  key={method}
+                  className="rounded-pill border border-white/15 bg-white/5 px-2.5 py-1 text-[0.72rem]"
+                >
+                  {method}
+                </li>
               ))}
-            </nav>
-            <ScrollToTop />
+            </ul>
+
+            <FooterHeading className="mt-8">Listed under</FooterHeading>
+            <p className="mt-2.5 text-[0.8rem] leading-relaxed text-brand-200">
+              {outletCategories.join(" · ")}
+            </p>
           </div>
         </div>
 
-        <div className="grid gap-6 border-b border-white/10 py-8 sm:grid-cols-2 lg:grid-cols-4">
-          <FooterFact icon={<MapPin aria-hidden="true" />} label="Address">
-            {site.addressLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </FooterFact>
-          <FooterFact icon={<Phone aria-hidden="true" />} label="Phone">
-            <a href={site.phoneHref} className="hover:text-white">
-              {site.phone}
-            </a>
-          </FooterFact>
-          <FooterFact icon={<Mail aria-hidden="true" />} label="Email">
-            <a href={`mailto:${site.email}`} className="break-all hover:text-white">
-              {site.email}
-            </a>
-          </FooterFact>
-          <FooterFact icon={<Clock aria-hidden="true" />} label="Hours">
-            {site.hours}
-            <span className="block">{site.hoursNote}</span>
-          </FooterFact>
+        <div className="mt-12 flex flex-col gap-6 border-t border-white/12 pt-8 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <HpLockup />
+            <p className="mt-4 max-w-[76ch] text-[0.75rem] leading-relaxed text-brand-200/80">
+              &ldquo;HP&rdquo;, &ldquo;HP Power&rdquo; and the Hindustan
+              Petroleum marks belong to Hindustan Petroleum Corporation Limited
+              and are used here by an authorised dealer. This site is run by the
+              dealership, not by HPCL. Fuel rates change daily — the rate board
+              on the forecourt is final.
+            </p>
+          </div>
+          <ScrollToTop />
         </div>
 
-        <div className="flex flex-wrap justify-between gap-3.5 pt-6 text-[0.77rem]">
+        <div className="mt-8 flex flex-wrap justify-between gap-3 border-t border-white/12 pt-6 text-[0.78rem] text-brand-200">
           <span>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </span>
-          <span>
-            Open 24×7 · <span lang="bn">{site.bengali}</span>
-          </span>
+          <span lang="bn">{site.bengali}</span>
         </div>
-
-        {/* The dealership's own mark now carries the brand up top, so the HP
-            badge sits with the attribution it belongs to. */}
-        <HpLockup className="mt-6" />
-
-        <p className="mt-4 max-w-[74ch] text-[0.72rem] leading-relaxed text-[#63707b]">
-          &ldquo;HP&rdquo;, &ldquo;HP Power&rdquo; and the Hindustan Petroleum marks belong to
-          Hindustan Petroleum Corporation Limited and are used here by an authorised dealer.
-          This site is run by the dealership, not by HPCL. Fuel rates change daily — the rate
-          board on the forecourt is final.
-        </p>
       </Container>
     </footer>
   );
 }
 
-function FooterFact({
-  icon,
-  label,
+function FooterHeading({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <h3
+      className={`font-display text-[0.72rem] font-bold tracking-[0.14em] text-white uppercase ${className ?? ""}`}
+    >
+      {children}
+    </h3>
+  );
+}
+
+function FooterColumn({
+  title,
   children,
 }: {
-  icon: React.ReactNode;
-  label: string;
+  title: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex gap-3">
-      <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-[3px] bg-white/[0.07] text-sodium [&_svg]:size-4">
-        {icon}
-      </span>
-      <div className="min-w-0">
-        <div className="font-display text-[0.64rem] font-extrabold tracking-[0.15em] text-white/60 uppercase">
-          {label}
-        </div>
-        <div className="mt-1 text-[0.86rem] leading-relaxed">{children}</div>
-      </div>
+    <div>
+      <FooterHeading>{title}</FooterHeading>
+      <ul className="mt-4 space-y-2.5 text-[0.88rem]">{children}</ul>
     </div>
+  );
+}
+
+function ContactRow({
+  icon: Icon,
+  children,
+}: {
+  icon: React.ElementType;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="flex gap-3">
+      <Icon
+        className="mt-1 size-4 shrink-0 text-brand-200"
+        aria-hidden="true"
+      />
+      <div className="min-w-0">{children}</div>
+    </li>
   );
 }

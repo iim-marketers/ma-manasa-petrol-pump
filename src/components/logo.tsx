@@ -3,11 +3,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
-/**
- * The dealership's own mark — gold on a dark plate, as it is on the sign.
- * The artwork's interior is cut out, so it needs a dark surface behind it:
- * on a light background the black letterforms would read inverted.
- */
 export function LogoMark({
   className,
   size = 40,
@@ -26,8 +21,8 @@ export function LogoMark({
   return (
     <span
       className={cn(
-        "relative block shrink-0 overflow-hidden rounded-[4px]",
-        plate && "bg-asphalt px-1 py-0.5",
+        "relative block shrink-0 overflow-hidden rounded-lg",
+        plate && "bg-brand-900 px-1 py-0.5",
         className,
       )}
       style={{ width: plate ? width + 8 : width, height: size }}

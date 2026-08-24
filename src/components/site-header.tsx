@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { MapPin, Menu, Phone } from "lucide-react";
+import { Clock, MapPin, Menu, Navigation, Phone } from "lucide-react";
 
 import { LinkButton } from "@/components/link-button";
 import { LogoMark } from "@/components/logo";
@@ -27,146 +27,160 @@ export function SiteHeader() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 h-nav border-b border-hairline bg-concrete/90 backdrop-blur-md backdrop-saturate-150">
-      <div className="mx-auto flex h-full w-full max-w-[1180px] items-center gap-5 px-5 sm:px-8 lg:px-14">
-        {/* Brand */}
-        <Link
-          href="/"
-          className="mr-auto flex min-w-0 items-center gap-3"
-          aria-label={`${site.name}, home`}
-          onClick={(event) => {
-            // Already home: the route never changes, so navigation is a no-op.
-            // Send the reader back to the top instead.
-            if (pathname === "/") {
-              event.preventDefault();
-              scrollToTop();
-            }
-          }}
-        >
-          <LogoMark size={42} className="shadow-[0_1px_0_rgb(18_23_28/0.14)]" />
-          <span className="min-w-0">
-            <span className="block truncate font-display text-[0.9rem] leading-tight font-black tracking-[-0.02em] uppercase">
-              {site.shortName}
-            </span>
-            <span className="block truncate text-[0.63rem] font-bold tracking-[0.1em] text-hp-blue uppercase">
-              HP · {site.highway} {site.locality}
-            </span>
+    <header className="sticky top-0 z-50">
+      {/* Utility strip */}
+      <div className="hidden bg-brand-900 text-brand-100 md:block">
+        <div className="mx-auto flex h-topbar w-full max-w-310 items-center gap-6 px-5 text-[0.78rem] sm:px-7 lg:px-10">
+          <span className="flex items-center gap-2">
+            <MapPin className="size-3.5 text-brand-200" aria-hidden="true" />
+            {site.addressLines[0]}
           </span>
-        </Link>
+          <a
+            href={site.phoneHref}
+            className="flex items-center gap-2 transition-colors hover:text-white"
+          >
+            <Phone className="size-3.5 text-brand-200" aria-hidden="true" />
+            {site.phone}
+          </a>
+          <span className="ml-auto flex items-center gap-2 font-medium text-white">
+            <i
+              className="animate-dot size-1.5 rounded-full bg-leaf-500"
+              aria-hidden="true"
+            />
+            <Clock className="size-3.5 text-brand-200" aria-hidden="true" />
+            {site.hours} · {site.hoursNote}
+          </span>
+        </div>
+      </div>
 
-        {/* Desktop menu */}
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
-              className={cn(
-                "group relative rounded-[3px] px-3 py-2 font-display text-[0.78rem] font-bold tracking-[0.12em] uppercase transition-colors",
-                isActive(item.href)
-                  ? "text-asphalt"
-                  : "text-asphalt/75 hover:text-asphalt",
-              )}
-            >
-              {item.label}
-              <span
+      {/* Main bar */}
+      <div className="border-b border-line bg-white/92 backdrop-blur-md">
+        <div className="mx-auto flex h-nav w-full max-w-310 items-center gap-5 px-5 sm:px-7 lg:px-10">
+          <Link
+            href="/"
+            className="mr-auto flex min-w-0 items-center gap-3"
+            aria-label={`${site.name}, home`}
+            onClick={(event) => {
+              if (pathname === "/") {
+                event.preventDefault();
+                scrollToTop();
+              }
+            }}
+          >
+            <LogoMark size={40} />
+            <span className="min-w-0">
+              <span className="block truncate font-display text-[1rem] leading-tight font-extrabold tracking-[-0.025em] text-ink">
+                {site.name}
+              </span>
+              <span className="block truncate text-[0.72rem] text-ink-2">
+                Authorised HP dealer · {site.highway} {site.locality}
+              </span>
+            </span>
+          </Link>
+
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
                 className={cn(
-                  "absolute right-3 bottom-1 left-3 h-0.5 origin-left bg-hp-red transition-transform duration-300",
+                  "rounded-pill px-3.5 py-2 font-display text-[0.86rem] font-semibold whitespace-nowrap transition-colors",
                   isActive(item.href)
-                    ? "scale-x-100"
-                    : "scale-x-0 group-hover:scale-x-100",
+                    ? "bg-brand-50 text-brand-700"
+                    : "text-ink-2 hover:bg-surface-2 hover:text-ink",
                 )}
-              />
-            </Link>
-          ))}
-        </nav>
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <LinkButton
-          href={site.mapsLink}
-          external
-          variant="hp"
-          size="sign-sm"
-          className="hidden sm:inline-flex"
-        >
-          <MapPin aria-hidden="true" />
-          Directions
-        </LinkButton>
-
-        {/* Mobile menu */}
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger
-            render={
-              <Button
-                variant="hpOutline"
-                size="icon-lg"
-                className="lg:hidden"
-                aria-label="Open menu"
-              />
-            }
+          <LinkButton
+            href={site.mapsLink}
+            external
+            variant="flame"
+            size="pill-sm"
+            className="hidden sm:inline-flex"
           >
-            <Menu aria-hidden="true" />
-          </SheetTrigger>
+            <Navigation aria-hidden="true" />
+            Directions
+          </LinkButton>
 
-          <SheetContent
-            side="right"
-            className="w-[86%] max-w-sm bg-paper p-0 gap-0"
-          >
-            <div className="flex items-center gap-3 border-b border-hairline p-5">
-              <LogoMark size={42} />
-              <SheetTitle className="font-display text-[0.9rem] leading-tight font-black tracking-[-0.02em] uppercase">
-                {site.shortName}
-                <span className="mt-0.5 block text-[0.62rem] font-bold tracking-widest text-hp-blue">
-                  HP · {site.highway} {site.locality}
-                </span>
-              </SheetTitle>
-            </div>
+          {/* Mobile menu */}
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="soft"
+                  size="icon-lg"
+                  className="border lg:hidden"
+                  aria-label="Open menu"
+                />
+              }
+            >
+              <Menu aria-hidden="true" />
+            </SheetTrigger>
 
-            {/* Padding sits on each row rather than the nav, so the divider
-                rules run edge to edge across the sheet. */}
-            <nav className="flex flex-col" aria-label="Mobile">
-              {nav.map((item) => (
-                <SheetClose
-                  key={item.href}
-                  nativeButton={false}
-                  render={<Link href={item.href} />}
-                  className={cn(
-                    "border-b border-hairline px-5 py-4 font-display text-[0.95rem] font-bold tracking-widest uppercase transition-colors",
-                    isActive(item.href)
-                      ? "text-hp-red"
-                      : "text-asphalt hover:text-hp-blue",
-                  )}
+            <SheetContent
+              side="right"
+              className="w-[88%] max-w-sm gap-0 bg-white p-0"
+            >
+              <div className="flex items-center gap-3 border-b border-line p-5">
+                <LogoMark size={40} />
+                <SheetTitle className="min-w-0 font-display text-[0.95rem] leading-tight font-extrabold tracking-[-0.02em] text-ink">
+                  {site.shortName}
+                  <span className="mt-0.5 block truncate text-[0.72rem] font-medium text-ink-2">
+                    {site.highway} · {site.locality}
+                  </span>
+                </SheetTitle>
+              </div>
+
+              <nav className="flex flex-col p-3" aria-label="Mobile">
+                {nav.map((item) => (
+                  <SheetClose
+                    key={item.href}
+                    nativeButton={false}
+                    render={<Link href={item.href} />}
+                    className={cn(
+                      "rounded-xl px-4 py-3.5 text-left font-display text-[0.98rem] font-semibold transition-colors",
+                      isActive(item.href)
+                        ? "bg-brand-50 text-brand-700"
+                        : "text-ink hover:bg-surface-2",
+                    )}
+                  >
+                    {item.label}
+                  </SheetClose>
+                ))}
+              </nav>
+
+              <div className="mt-auto space-y-3 border-t border-line p-5">
+                <LinkButton
+                  href={site.phoneHref}
+                  variant="soft"
+                  size="pill"
+                  className="w-full border"
                 >
-                  {item.label}
-                </SheetClose>
-              ))}
-            </nav>
-
-            <div className="mt-auto flex flex-col gap-3 p-5">
-              <LinkButton
-                href={site.mapsLink}
-                external
-                variant="hp"
-                size="sign"
-                className="w-full"
-              >
-                <MapPin aria-hidden="true" />
-                Get directions
-              </LinkButton>
-              <LinkButton
-                href={site.phoneHref}
-                variant="hpOutline"
-                size="sign"
-                className="w-full"
-              >
-                <Phone aria-hidden="true" />
-                Call the pump
-              </LinkButton>
-              <p className="pt-1 text-center text-[0.78rem] text-ink-mute">
-                Open 24×7 · {site.bengali}
-              </p>
-            </div>
-          </SheetContent>
-        </Sheet>
+                  <Phone aria-hidden="true" />
+                  {site.phone}
+                </LinkButton>
+                <LinkButton
+                  href={site.mapsLink}
+                  external
+                  variant="flame"
+                  size="pill"
+                  className="w-full"
+                >
+                  <Navigation aria-hidden="true" />
+                  Get directions
+                </LinkButton>
+                <p className="pt-1 text-center text-[0.78rem] text-ink-2">
+                  {site.hours} · {site.hoursNote}
+                </p>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
