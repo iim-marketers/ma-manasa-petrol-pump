@@ -76,14 +76,13 @@ export function ServiceDetail({
       />
 
       <div className="p-6 sm:p-9 lg:p-11">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
           <IconChip size="lg" tone="brand">
             <ServiceGlyph name={service.icon} />
           </IconChip>
-          {service.comingSoon ? <ComingSoon /> : null}
+          <h3 className="t-h3 md:t-h2">{service.title}</h3>
         </div>
 
-        <h3 className="t-h2 mt-5">{service.title}</h3>
         <p className="mt-3 leading-relaxed text-ink-2">{service.body}</p>
 
         <ul className="mt-6 space-y-3">

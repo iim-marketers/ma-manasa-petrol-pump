@@ -8,7 +8,7 @@ import { nearby, site } from "@/lib/site";
 
 export function LocateBand() {
   return (
-    <Section tone="surface" id="locate" className="scroll-mt-24">
+    <Section tone="surface" id="locate" className="scroll-mt-24 pt-0!">
       <Container>
         <SectionHead
           eyebrow="Locate us"
