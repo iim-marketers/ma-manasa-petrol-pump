@@ -60,6 +60,8 @@
   /* Layout rhythm */
   --spacing-nav: 4.5rem;
   --spacing-topbar: 2.5rem;
+  /* Height of the mobile bottom tab bar, excluding the safe-area inset. */
+  --spacing-tabbar: 4rem;
 }
 
 @theme inline {

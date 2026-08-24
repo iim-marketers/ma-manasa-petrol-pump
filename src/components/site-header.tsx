@@ -2,26 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Clock, MapPin, Menu, Navigation, Phone } from "lucide-react";
+import { Clock, MapPin, Navigation, Phone } from "lucide-react";
 
 import { LinkButton } from "@/components/link-button";
 import { LogoMark } from "@/components/logo";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { scrollToTop } from "@/lib/scroll";
 import { nav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -55,7 +45,7 @@ export function SiteHeader() {
 
       {/* Main bar */}
       <div className="border-b border-line bg-white/92 backdrop-blur-md">
-        <div className="mx-auto flex h-nav w-full max-w-310 items-center gap-5 px-5 sm:px-7 lg:px-10">
+        <div className="mx-auto flex h-nav w-full max-w-310 items-center gap-3 px-5 sm:gap-5 sm:px-7 lg:px-10">
           <Link
             href="/"
             className="mr-auto flex min-w-0 items-center gap-3"
@@ -96,90 +86,29 @@ export function SiteHeader() {
             ))}
           </nav>
 
+          {/* The page links live in the bottom tab bar on small screens, so the
+              header keeps only the two actions a driver actually needs. */}
+          <LinkButton
+            href={site.phoneHref}
+            variant="soft"
+            size="icon-lg"
+            className="border lg:hidden"
+            aria-label={`Call ${site.phone}`}
+          >
+            <Phone aria-hidden="true" />
+          </LinkButton>
+
           <LinkButton
             href={site.mapsLink}
             external
             variant="flame"
             size="pill-sm"
-            className="hidden sm:inline-flex"
+            className="px-3 sm:px-4"
+            aria-label="Get directions"
           >
             <Navigation aria-hidden="true" />
-            Directions
+            <span className="hidden sm:inline">Directions</span>
           </LinkButton>
-
-          {/* Mobile menu */}
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger
-              render={
-                <Button
-                  variant="soft"
-                  size="icon-lg"
-                  className="border lg:hidden"
-                  aria-label="Open menu"
-                />
-              }
-            >
-              <Menu aria-hidden="true" />
-            </SheetTrigger>
-
-            <SheetContent
-              side="right"
-              className="w-[88%] max-w-sm gap-0 bg-white p-0"
-            >
-              <div className="flex items-center gap-3 border-b border-line p-5">
-                <LogoMark size={40} />
-                <SheetTitle className="min-w-0 font-display text-[0.95rem] leading-tight font-extrabold tracking-[-0.02em] text-ink">
-                  {site.shortName}
-                  <span className="mt-0.5 block truncate text-[0.72rem] font-medium text-ink-2">
-                    {site.highway} · {site.locality}
-                  </span>
-                </SheetTitle>
-              </div>
-
-              <nav className="flex flex-col p-3" aria-label="Mobile">
-                {nav.map((item) => (
-                  <SheetClose
-                    key={item.href}
-                    nativeButton={false}
-                    render={<Link href={item.href} />}
-                    className={cn(
-                      "rounded-xl px-4 py-3.5 text-left font-display text-[0.98rem] font-semibold transition-colors",
-                      isActive(item.href)
-                        ? "bg-brand-50 text-brand-700"
-                        : "text-ink hover:bg-surface-2",
-                    )}
-                  >
-                    {item.label}
-                  </SheetClose>
-                ))}
-              </nav>
-
-              <div className="mt-auto space-y-3 border-t border-line p-5">
-                <LinkButton
-                  href={site.phoneHref}
-                  variant="soft"
-                  size="pill"
-                  className="w-full border"
-                >
-                  <Phone aria-hidden="true" />
-                  {site.phone}
-                </LinkButton>
-                <LinkButton
-                  href={site.mapsLink}
-                  external
-                  variant="flame"
-                  size="pill"
-                  className="w-full"
-                >
-                  <Navigation aria-hidden="true" />
-                  Get directions
-                </LinkButton>
-                <p className="pt-1 text-center text-[0.78rem] text-ink-2">
-                  {site.hours} · {site.hoursNote}
-                </p>
-              </div>
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </header>

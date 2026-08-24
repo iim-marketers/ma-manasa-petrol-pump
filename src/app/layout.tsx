@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
+import { MobileTabBar } from "@/components/mobile-tab-bar";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Toaster } from "@/components/ui/sonner";
@@ -56,20 +57,21 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${jakarta.variable} ${inter.variable} h-full`}
-    >
-      <body className="flex min-h-full flex-col">
-        {/* Scroll reveals are driven by IntersectionObserver — without JS the
-            content must still be visible. */}
+    <html lang="en" className={`${jakarta.variable} ${inter.variable} h-full`}>
+      {/* The bottom padding clears the fixed mobile tab bar. */}
+      <body className="flex min-h-full flex-col pb-[calc(var(--spacing-tabbar)+env(safe-area-inset-bottom))] lg:pb-0">
         <noscript>
           <style>{".reveal{opacity:1;transform:none}"}</style>
         </noscript>
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
-        <Toaster position="bottom-right" richColors />
+        <MobileTabBar />
+        <Toaster
+          position="bottom-right"
+          richColors
+          mobileOffset={{ bottom: "calc(var(--spacing-tabbar) + 1rem)" }}
+        />
       </body>
     </html>
   );
