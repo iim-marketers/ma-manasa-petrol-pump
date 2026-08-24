@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Clock, CreditCard, Mail, MapPin, Navigation, Phone } from "lucide-react";
+import { Clock, CreditCard, Mail, MapPin, Phone } from "lucide-react";
 
 import { Container, Section, SectionHead } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { IconChip } from "@/components/icons";
-import { LinkButton } from "@/components/link-button";
 import { MapEmbed } from "@/components/map-embed";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
-import { businessHours, paymentMethods, photos, site } from "@/lib/site";
+import { paymentMethods, photos, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -97,27 +96,6 @@ export default function ContactPage() {
                 </div>
               ))}
             </dl>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <LinkButton
-                href={site.mapsLink}
-                external
-                variant="flame"
-                size="pill"
-              >
-                <Navigation aria-hidden="true" />
-                Get directions
-              </LinkButton>
-              <LinkButton
-                href={site.phoneHref}
-                variant="soft"
-                size="pill"
-                className="border"
-              >
-                <Phone aria-hidden="true" />
-                Call the pump
-              </LinkButton>
-            </div>
           </Reveal>
 
           <Reveal delay={80}>
@@ -134,45 +112,9 @@ export default function ContactPage() {
             lede="Right on the highway with entry from both directions — no detour into town."
           />
 
-          <div className="grid gap-4 lg:grid-cols-[1.45fr_0.55fr]">
+          <div className="grid gap-4 lg:grid-cols-1">
             <Reveal>
               <MapEmbed />
-            </Reveal>
-
-            <Reveal delay={60}>
-              <div className="card-base h-full overflow-hidden">
-                <div className="border-b border-line p-5">
-                  <h3 className="t-h3">Opening hours</h3>
-                  <p className="mt-1 text-[0.84rem] text-ink-2">
-                    {site.hoursNote}
-                  </p>
-                </div>
-                <table className="w-full text-left">
-                  <caption className="sr-only">Opening hours by day</caption>
-                  <tbody>
-                    {businessHours.map((row) => (
-                      <tr key={row.day} className="border-b border-line/70">
-                        <th
-                          scope="row"
-                          className="px-5 py-2.5 text-[0.88rem] font-medium text-ink-2"
-                        >
-                          {row.day}
-                        </th>
-                        <td className="px-5 py-2.5 text-right text-[0.85rem] tabular-nums text-ink">
-                          {row.opens} – {row.closes}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <p className="flex items-center gap-2 px-5 py-4 text-[0.84rem] font-semibold text-leaf-700">
-                  <i
-                    className="animate-dot size-1.5 rounded-full bg-leaf-500"
-                    aria-hidden="true"
-                  />
-                  Open right now
-                </p>
-              </div>
             </Reveal>
           </div>
         </Container>

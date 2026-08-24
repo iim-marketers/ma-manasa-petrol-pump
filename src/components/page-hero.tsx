@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, MapPin } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { site } from "@/lib/site";
@@ -33,35 +33,31 @@ export function PageHero({
       />
 
       <Container className="py-12 lg:py-16">
-        {/* <nav
-          aria-label="Breadcrumb"
-          className="mb-5 flex items-center gap-1.5 text-[0.82rem] text-brand-200"
-        >
-          <Link href="/" className="transition-colors hover:text-white">
-            Home
-          </Link>
-          <ChevronRight className="size-3.5" aria-hidden="true" />
-          <span className="text-white">{crumb}</span>
-        </nav> */}
-
         <span className="t-eyebrow mb-3 text-brand-200">{eyebrow}</span>
         <h1 className="t-display max-w-[20ch] text-white">{title}</h1>
         <p className="mt-4 max-w-[62ch] text-[1.02rem] leading-relaxed text-brand-100/85">
           {lede}
         </p>
 
-        <p className="mt-6 flex flex-wrap items-center gap-2.5 text-[0.84rem] text-brand-200">
-          <span className="inline-flex items-center gap-2 rounded-pill border border-white/18 bg-white/8 px-3.5 py-1.5">
+        {/* Status + location, given more weight than plain grey chips. */}
+        <div className="mt-7 flex flex-wrap items-center gap-2.5 text-[0.86rem]">
+          <span className="chip-onDark border-leaf-500/45 bg-leaf-500/18 font-semibold text-white">
             <i
-              className="animate-dot size-1.5 rounded-full bg-leaf-500"
+              className="animate-dot-bright size-2 rounded-full bg-leaf-300"
               aria-hidden="true"
             />
             Open 24×7
           </span>
-          <span className="rounded-pill border border-white/18 bg-white/8 px-3.5 py-1.5">
-            {site.highway} · {site.locality}
+
+          <span className="chip-onDark border-white/20 bg-white/10 text-brand-100">
+            <MapPin className="size-3.5 text-flame-500" aria-hidden="true" />
+            <span className="font-semibold text-white">{site.highway}</span>
+            <span className="text-brand-200/60" aria-hidden="true">
+              ·
+            </span>
+            {site.locality}
           </span>
-        </p>
+        </div>
       </Container>
     </section>
   );

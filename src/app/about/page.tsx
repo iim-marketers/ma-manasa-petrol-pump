@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { BadgeCheck, Gauge, Receipt, ShieldCheck } from "lucide-react";
 
 import { Container, Section, SectionHead } from "@/components/container";
-import { CtaBand } from "@/components/cta-band";
-import { HpLockup } from "@/components/hp-logo";
 import { IconChip } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { Photo } from "@/components/photo";
@@ -55,11 +53,6 @@ export default function AboutPage() {
       <Story />
       <Promises />
       <Location />
-
-      <CtaBand
-        title="Come and see the forecourt."
-        body="We are on the NH-12 stretch at Muragachha, close to Kalyani More, with entry from both directions."
-      />
     </>
   );
 }
@@ -70,7 +63,10 @@ function StatBar() {
   const stats = [
     { value: "24×7", label: "Open, every day of the year" },
     { value: String(services.length), label: "Services on one forecourt" },
-    { value: String(amenities.length), label: "Amenities, none of them charged" },
+    {
+      value: String(amenities.length),
+      label: "Amenities, none of them charged",
+    },
     { value: site.highway, label: "Direct highway frontage" },
   ];
 
@@ -99,7 +95,6 @@ function Story() {
     <Section tone="surface">
       <Container className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
         <Reveal>
-          <HpLockup className="mb-6" />
           <h2 className="t-h2">Who we are</h2>
 
           <div className="mt-5 space-y-4 text-ink-2">
@@ -215,8 +210,8 @@ function Location() {
           <p className="t-lede mt-4">
             The pump has direct {site.highway} frontage with a wide entry and a
             separate exit, so a loaded truck can swing in and pull out without
-            reversing across traffic. Kalyani More is minutes away;
-            Krishnanagar is straight up the road and Barasat straight down it.
+            reversing across traffic. Kalyani More is minutes away; Krishnanagar
+            is straight up the road and Barasat straight down it.
           </p>
           <Photo
             src={photos.building}

@@ -1,8 +1,7 @@
-import { ArrowUpRight, Car, Navigation, ParkingCircle } from "lucide-react";
+import { ParkingCircle } from "lucide-react";
 
 import { Container, Section, SectionHead } from "@/components/container";
 import { IconChip } from "@/components/icons";
-import { LinkButton } from "@/components/link-button";
 import { MapEmbed } from "@/components/map-embed";
 import { Reveal } from "@/components/reveal";
 import { nearby, site } from "@/lib/site";
@@ -20,17 +19,6 @@ export function LocateBand() {
           eyebrow="Locate us"
           title="On the highway, not off it"
           lede={`Direct ${site.highway} frontage with a wide entry and a separate exit, so a loaded truck can swing in and pull out without reversing across traffic.`}
-          action={
-            <LinkButton
-              href={site.mapsLink}
-              external
-              variant="flame"
-              size="pill"
-            >
-              <Navigation aria-hidden="true" />
-              Get directions
-            </LinkButton>
-          }
         />
 
         <div className="grid gap-4 lg:grid-cols-[1.4fr_0.6fr]">
@@ -86,29 +74,6 @@ export function LocateBand() {
                 </p>
               </div>
             </div>
-
-            <a
-              href={site.mapsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-base card-hover group flex items-center gap-3.5 p-6"
-            >
-              <IconChip size="sm" tone="flame">
-                <Car aria-hidden="true" />
-              </IconChip>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-display text-[0.95rem] font-bold text-ink">
-                  Entry from both directions
-                </h3>
-                <p className="mt-1 text-[0.84rem] text-ink-2">
-                  Northbound and southbound on {site.highway}.
-                </p>
-              </div>
-              <ArrowUpRight
-                className="size-4 shrink-0 text-ink-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                aria-hidden="true"
-              />
-            </a>
           </Reveal>
         </div>
       </Container>

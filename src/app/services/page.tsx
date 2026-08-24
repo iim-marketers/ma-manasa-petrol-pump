@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { AmenityGrid } from "@/components/amenity-grid";
 import { Container, Section, SectionHead } from "@/components/container";
 import { CtaBand } from "@/components/cta-band";
-import { IconChip, ServiceGlyph } from "@/components/icons";
-import { LinkButton } from "@/components/link-button";
+import { ServiceGlyph } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import {
@@ -13,9 +12,7 @@ import {
   ServiceDetail,
   ServiceRow,
 } from "@/components/service-cards";
-// import { ServiceTimes } from "@/components/service-times";
 import {
-  amenities,
   photos,
   serviceGroups,
   services,
@@ -46,7 +43,6 @@ export default function ServicesPage() {
       <AltSection />
       <ForecourtSection />
       <AmenitySection />
-      {/* <ServiceTimes /> */}
 
       <CtaBand
         title="Not sure we stock it?"

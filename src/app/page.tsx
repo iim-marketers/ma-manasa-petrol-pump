@@ -1,21 +1,19 @@
 import { ArrowRight } from "lucide-react";
 
-import { AmenityGrid } from "@/components/amenity-grid";
 import { Container, Section, SectionHead } from "@/components/container";
 import { CtaBand } from "@/components/cta-band";
 import { Hero } from "@/components/hero";
 import { LinkButton } from "@/components/link-button";
 import { LocateBand } from "@/components/locate-band";
-import { OfferRail } from "@/components/offer-rail";
 import { OutletCard } from "@/components/outlet-card";
 import { Photo } from "@/components/photo";
-import { PriceStrip } from "@/components/price-strip";
+// import { PriceStrip } from "@/components/price-strip";
 import { QuickAccess } from "@/components/quick-access";
 import { Reveal } from "@/components/reveal";
 import { ReviewBand } from "@/components/review-band";
 import { ServiceCard, ServiceDetail } from "@/components/service-cards";
 
-import { amenities, gallery, servicesInGroup, site } from "@/lib/site";
+import { gallery, servicesInGroup } from "@/lib/site";
 
 /**
  * Section order mirrors the HP dealer listing the client pointed at — banner,
@@ -29,13 +27,11 @@ export default function HomePage() {
       <OutletCard />
       {/* <PriceStrip /> */}
       <ProductSection />
-      {/* <OfferRail /> */}
-      {/* <AmenitySection /> */}
       <QuickAccess />
       <GallerySection />
       <ReviewBand />
       <LocateBand />
-      <CtaBand />
+      {/* <CtaBand /> */}
     </>
   );
 }
@@ -90,24 +86,6 @@ function ProductSection() {
             <ArrowRight aria-hidden="true" />
           </LinkButton>
         </Reveal>
-      </Container>
-    </Section>
-  );
-}
-
-/* ---------------- Amenities ---------------- */
-
-function AmenitySection() {
-  return (
-    <Section tone="surface" id="amenities" className="scroll-mt-24">
-      <Container>
-        <SectionHead
-          eyebrow="Service amenities"
-          title={`${amenities.length} things that cost you nothing`}
-          lede={`None of these are on the rate board. They are the reasons a driver picks one pump on ${site.highway} over the next one down the road — and the reason the same trucks stop here on the way back.`}
-        />
-
-        <AmenityGrid />
       </Container>
     </Section>
   );

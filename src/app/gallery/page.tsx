@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { Container, Section } from "@/components/container";
-import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
 import { Photo } from "@/components/photo";
 import { Reveal } from "@/components/reveal";
@@ -28,9 +27,7 @@ export default function GalleryPage() {
 
       <Section tone="surface">
         <Container>
-          {/* The lead tile takes a 2x2 block; the eight that follow fill the
-              remaining cells of the four-column grid exactly. */}
-          <Reveal className="grid grid-cols-2 gap-3 sm:auto-rows-[13rem] sm:grid-cols-4 lg:auto-rows-[15.5rem]">
+          <Reveal className="grid grid-cols-2 gap-3 sm:auto-rows-52 sm:grid-cols-4 lg:auto-rows-62">
             {gallery.map((tile, i) => (
               <Photo
                 key={tile.caption}
@@ -48,16 +45,11 @@ export default function GalleryPage() {
           </Reveal>
 
           <p className="mt-8 text-center text-[0.86rem] text-ink-2">
-            All photographs taken at {site.name}, {site.highway}{" "}
-            {site.locality}.
+            All photographs taken at {site.name}, {site.highway} {site.locality}
+            .
           </p>
         </Container>
       </Section>
-
-      <CtaBand
-        title="The real thing is better."
-        body="Pull in off NH-12 at Muragachha and see the forecourt for yourself — any hour, any day."
-      />
     </>
   );
 }

@@ -34,6 +34,8 @@
   --color-hp-red: #e1251b;
 
   --color-leaf-50: #e9f7f0;
+  /* legible green on the dark brand bands */
+  --color-leaf-300: #4bd39b;
   --color-leaf-500: #12925a;
   --color-leaf-700: #0b6b41;
 
@@ -260,6 +262,14 @@
     );
   }
 
+  /* Meta chip for the dark brand bands (hero status, location) */
+  .chip-onDark {
+    @apply inline-flex items-center gap-2 rounded-pill border px-4 py-2 backdrop-blur-sm;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.14),
+      0 6px 18px -12px rgb(0 0 0 / 0.7);
+  }
+
   /* Thin rule used above section headings */
   .rule-accent::before {
     content: "";
@@ -327,6 +337,23 @@
 
 .animate-dot {
   animation: pulse-dot 2.2s infinite;
+}
+
+/* Same pulse, tuned to read against the dark bands */
+@keyframes pulse-dot-bright {
+  0% {
+    box-shadow: 0 0 0 0 rgb(75 211 155 / 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgb(75 211 155 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(75 211 155 / 0);
+  }
+}
+
+.animate-dot-bright {
+  animation: pulse-dot-bright 2.2s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
