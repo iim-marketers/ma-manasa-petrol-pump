@@ -18,7 +18,6 @@ export function Photo({
   className?: string;
   sizes?: string;
   priority?: boolean;
-  /** CSS object-position — lets two tiles show different crops of one photo. */
   position?: string;
   rounded?: "card" | "none" | "lg";
 }) {

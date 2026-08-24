@@ -107,3 +107,31 @@ export function IconChip({
     </span>
   );
 }
+
+/**
+ * The round, ringed glyph used at the head of a service card — a circle rather
+ * than the squared `IconChip`, so a product heading reads as its own mark.
+ */
+export function IconMedallion({
+  children,
+  size = "md",
+  className,
+}: {
+  children: React.ReactNode;
+  size?: "sm" | "md" | "lg";
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn(
+        "grid shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 ring-1 ring-brand-100 ring-inset",
+        size === "sm" && "size-9 [&_svg]:size-4.5",
+        size === "md" && "size-11 [&_svg]:size-5.5",
+        size === "lg" && "size-14 [&_svg]:size-7",
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}

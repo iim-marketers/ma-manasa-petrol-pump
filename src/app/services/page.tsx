@@ -108,9 +108,9 @@ function FuelSection() {
           lede={serviceGroups.fuel.blurb}
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           {fuels.map((service, i) => (
-            <Reveal key={service.slug} delay={(i % 4) * 50}>
+            <Reveal key={service.slug} delay={(i % 2) * 50}>
               <div id={service.slug} className="h-full scroll-mt-28">
                 <ServiceCard service={service} className="h-full" />
               </div>

@@ -49,9 +49,9 @@ function ProductSection() {
           lede="Fuel is only the first reason to pull in. Four grades on the islands, gas and charging on their own bays, and the counters behind them — so nobody on this stretch has to make a second stop."
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           {fuels.map((service, i) => (
-            <Reveal key={service.slug} delay={(i % 4) * 55}>
+            <Reveal key={service.slug} delay={(i % 2) * 55}>
               <ServiceCard service={service} className="h-full" />
             </Reveal>
           ))}

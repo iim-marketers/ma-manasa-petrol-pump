@@ -6,7 +6,13 @@ import { HpLockup } from "@/components/hp-logo";
 import { LinkButton } from "@/components/link-button";
 import { LogoMark } from "@/components/logo";
 import { ScrollToTop } from "@/components/scroll-to-top";
-import { nav, outletCategories, paymentMethods, services, site } from "@/lib/site";
+import {
+  nav,
+  outletCategories,
+  paymentMethods,
+  services,
+  site,
+} from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -143,7 +149,8 @@ export function SiteFooter() {
               on the forecourt is final.
             </p>
           </div>
-          <ScrollToTop />
+
+          <ScrollToTop className="self-start" />
         </div>
 
         <div className="mt-8 flex flex-wrap justify-between gap-3 border-t border-white/12 pt-6 text-[0.78rem] text-brand-200">
