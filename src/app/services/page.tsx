@@ -121,35 +121,6 @@ function FuelSection() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="card-base mt-4 flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-          <div className="flex gap-4">
-            <IconChip size="md" tone="leaf">
-              <ShieldCheck aria-hidden="true" />
-            </IconChip>
-            <div>
-              <h3 className="t-h3">Quantity and quality, in that order</h3>
-              <p className="mt-2 max-w-[68ch] text-[0.9rem] leading-relaxed text-ink-2">
-                Every fill starts with the meter reset to zero and turned
-                towards you. Density checks and calibration records are kept on
-                site — if a reading ever looks off, ask for the manager and the
-                paperwork comes out. Fuel arrives sealed through Hindustan
-                Petroleum&rsquo;s own supply chain, and the seals are checked on
-                arrival.
-              </p>
-            </div>
-          </div>
-
-          <LinkButton
-            href="/about"
-            variant="soft"
-            size="pill-sm"
-            className="shrink-0 border"
-          >
-            How we run the pump
-            <ArrowRight aria-hidden="true" />
-          </LinkButton>
-        </Reveal>
       </Container>
     </Section>
   );
@@ -217,7 +188,7 @@ function AmenitySection() {
       <Container>
         <SectionHead
           eyebrow="Service amenities"
-          title={`${amenities.length} things that cost you nothing`}
+          title={`Few things that cost you nothing`}
           lede={`None of these are on the rate board. They are the reasons a driver picks one pump on ${site.highway} over the next one down the road — and the reason the same trucks stop here on the way back.`}
         />
 

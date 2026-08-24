@@ -16,8 +16,27 @@ const proof = [
 export function Hero() {
   return (
     <section className="wash-brand relative isolate overflow-hidden text-white">
-      <Container className="relative grid items-center gap-14 py-12 lg:grid-cols-[1.02fr_0.98fr] lg:py-16">
-        <div>
+      {/* The forecourt runs full-bleed behind the copy. */}
+      <Image
+        src={photos.forecourt}
+        alt={`The forecourt at ${site.name}, seen from the ${site.highway} entry`}
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover object-center"
+      />
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgb(4_24_47/0.94)_0%,rgb(4_24_47/0.86)_38%,rgb(4_24_47/0.62)_68%,rgb(4_24_47/0.5)_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(to_top,rgb(4_24_47/0.95),transparent)]"
+      />
+
+      <Container className="relative py-12 lg:py-16">
+        <div className="max-w-184">
           <HpLockup className="animate-fade-up mb-6" />
 
           <h1
@@ -39,7 +58,7 @@ export function Hero() {
           </p>
 
           <ul
-            className="animate-fade-up mt-7 grid gap-x-6 gap-y-2.5 sm:grid-cols-2"
+            className="animate-fade-up mt-7 grid max-w-[40rem] gap-x-6 gap-y-2.5 sm:grid-cols-2"
             style={{ animationDelay: "0.2s" }}
           >
             {proof.map((item) => (
@@ -80,26 +99,9 @@ export function Hero() {
             </LinkButton>
           </div>
         </div>
-
-        {/* Photo panel */}
-        <div
-          className="animate-fade-up relative"
-          style={{ animationDelay: "0.16s" }}
-        >
-          <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-white/12 shadow-[0_40px_80px_-40px_rgb(0_0_0/0.8)] sm:aspect-16/11">
-            <Image
-              src={photos.forecourt}
-              alt={`The forecourt at ${site.name}, seen from the ${site.highway} entry`}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 48vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
       </Container>
 
-      {/* The status card hangs past the panel, so the band needs the room. */}
+      {/* The outlet card hangs past the band, so it needs the room. */}
       <div className="h-10 lg:h-6" aria-hidden="true" />
     </section>
   );

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { ComingSoon } from "@/components/coming-soon";
 import { IconChip, ServiceGlyph } from "@/components/icons";
@@ -7,11 +6,6 @@ import { Photo } from "@/components/photo";
 import type { Service } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/**
- * Product tile: photograph, title, one line, and a "Know more" link — the
- * shape the HP dealer listings use for their fuel range, given real photos and
- * proper spacing.
- */
 export function ServiceCard({
   service,
   className,
@@ -20,10 +14,9 @@ export function ServiceCard({
   className?: string;
 }) {
   return (
-    <Link
-      href={`/services#${service.slug}`}
+    <article
       className={cn(
-        "card-base card-hover group flex flex-col overflow-hidden",
+        "card-base card-hover flex flex-col overflow-hidden",
         className,
       )}
     >
@@ -52,16 +45,8 @@ export function ServiceCard({
         <p className="mt-3 flex-1 text-[0.89rem] leading-relaxed text-ink-2">
           {service.short}
         </p>
-
-        <span className="mt-4 inline-flex items-center gap-1.5 font-display text-[0.84rem] font-semibold text-brand-600">
-          Know more
-          <ArrowRight
-            className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-            aria-hidden="true"
-          />
-        </span>
       </div>
-    </Link>
+    </article>
   );
 }
 
@@ -81,10 +66,7 @@ export function ServiceDetail({
 }) {
   return (
     <article
-      className={cn(
-        "card-base grid overflow-hidden lg:grid-cols-2",
-        className,
-      )}
+      className={cn("card-base grid overflow-hidden lg:grid-cols-2", className)}
     >
       <Photo
         src={service.image}
@@ -93,7 +75,7 @@ export function ServiceDetail({
         rounded="none"
         sizes="(max-width: 1024px) 100vw, 50vw"
         className={cn(
-          "h-60 sm:h-80 lg:h-full lg:min-h-[24rem]",
+          "h-60 sm:h-80 lg:h-full lg:min-h-96",
           flip && "lg:order-2",
         )}
       />
@@ -166,7 +148,10 @@ export function ServiceRow({ service }: { service: Service }) {
               key={detail}
               className="flex items-center gap-2 text-[0.85rem] text-ink-2"
             >
-              <Check className="size-3.5 shrink-0 text-leaf-500" aria-hidden="true" />
+              <Check
+                className="size-3.5 shrink-0 text-leaf-500"
+                aria-hidden="true"
+              />
               {detail}
             </li>
           ))}
