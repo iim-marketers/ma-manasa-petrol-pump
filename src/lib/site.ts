@@ -26,12 +26,13 @@ export const site = {
   zoom: 16,
 } as const;
 
+/** `short` is what the mobile tab bar shows — five labels have to fit one row. */
 export const nav = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services & Amenities" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/", label: "Home", short: "Home" },
+  { href: "/about", label: "About", short: "About" },
+  { href: "/services", label: "Services & Amenities", short: "Services" },
+  { href: "/gallery", label: "Gallery", short: "Gallery" },
+  { href: "/contact", label: "Contact Us", short: "Contact" },
 ] as const;
 
 /**

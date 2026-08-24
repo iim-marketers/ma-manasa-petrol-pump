@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       <Hero />
       <OutletCard />
-      {/* <PriceStrip /> */}
+      {/* <PriceStrip />   */}
       <ProductSection />
       <QuickAccess />
       <GallerySection />

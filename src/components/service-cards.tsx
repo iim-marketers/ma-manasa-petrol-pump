@@ -50,11 +50,6 @@ export function ServiceCard({
   );
 }
 
-/**
- * The long form, used on the services page: photograph one side, full copy and
- * the checklist the other. `flip` alternates the photo so a stack of them
- * does not march down the page in one direction.
- */
 export function ServiceDetail({
   service,
   flip = false,
@@ -110,10 +105,6 @@ export function ServiceDetail({
   );
 }
 
-/**
- * A compact row used on the services page for the third group, where a full
- * photo panel each would overwhelm the page but a bare list would undersell it.
- */
 export function ServiceRow({ service }: { service: Service }) {
   return (
     <article
