@@ -58,7 +58,7 @@ export function SiteHeader() {
             }}
           >
             <LogoMark size={40} />
-            <span className="max-w-52 md:max-w-full">
+            <span className="min-w-0 max-[520px]:max-w-52">
               <span className="block truncate font-display text-[1rem] leading-tight font-extrabold tracking-tight text-ink">
                 {site.name}
               </span>
