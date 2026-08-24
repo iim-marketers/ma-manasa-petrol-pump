@@ -92,21 +92,21 @@ const photoDir = "/new-images";
 
 export const photos = {
   /** Wide view from the entry: the full canopy, both islands and the building. */
-  forecourt: `${photoDir}/Forecourt-3.jpeg`,
+  forecourt: `${photoDir}/Forecourt-3.png`,
   /** Under the canopy — islands 1 and 2, the HP tanker unloading, bikes queued. */
-  canopy: `${photoDir}/Forecourt-1.jpeg`,
+  canopy: `${photoDir}/Forecourt-1.png`,
   /** The canopy beside the station building: lube display and solar roof. */
-  building: `${photoDir}/Forecourt-2.jpeg`,
+  building: `${photoDir}/Forecourt-2.png`,
   /** The Power 100 / Power 95 dispenser with the meter facing the customer. */
-  powerGrades: `${photoDir}/power-100-95.jpeg`,
+  powerGrades: `${photoDir}/power-100-95.png`,
   /** The HP CNG dispenser on its own bay. */
-  cng: `${photoDir}/CNG.jpeg`,
+  cng: `${photoDir}/CNG.png`,
   /** The HP e-Charge electric vehicle charging station. */
-  evCharge: `${photoDir}/HP-Echarge.jpeg`,
+  evCharge: `${photoDir}/HP-Echarge.png`,
   /** The covered air point beside the forecourt. */
-  air: `${photoDir}/Air-pressure.jpeg`,
+  air: `${photoDir}/Air-pressure.png`,
   /** The PUC — smoke test — booth at the edge of the forecourt. */
-  puc: `${photoDir}/PUC.jpeg`,
+  puc: `${photoDir}/PUC.png`,
 } as const;
 
 export type ServiceIcon =
