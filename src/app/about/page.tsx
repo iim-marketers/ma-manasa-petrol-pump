@@ -45,7 +45,7 @@ export default function AboutPage() {
         eyebrow="About the pump"
         title="One stop on the Kalyani run"
         lede={`An authorised Hindustan Petroleum dealership on ${site.highway} at ${site.locality}, built so that nobody driving this stretch has to make a second stop.`}
-        image={photos.forecourt}
+        image={photos.canopy}
         imageAlt=""
       />
 

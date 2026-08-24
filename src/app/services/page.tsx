@@ -34,7 +34,7 @@ export default function ServicesPage() {
         eyebrow="Services & amenities"
         title="Everything on one apron"
         lede="Fuel on two islands, gas and charging on their own bays, and the counters and conveniences behind them. Roll in, get what you need, get back on the highway."
-        image={photos.forecourt}
+        image={photos.canopy}
         imageAlt=""
       />
 
