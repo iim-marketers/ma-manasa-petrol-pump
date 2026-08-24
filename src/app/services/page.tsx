@@ -55,11 +55,6 @@ export default function ServicesPage() {
 
 /* ---------------- Jump index ---------------- */
 
-/**
- * Nine services is more than fits on one screen, so the page opens with the
- * whole list as anchors — scrollable on phones rather than wrapping into four
- * ragged rows.
- */
 function ServiceIndex() {
   return (
     <div className="border-b border-line bg-surface-2">

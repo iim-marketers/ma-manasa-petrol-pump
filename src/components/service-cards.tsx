@@ -98,7 +98,6 @@ function ServicePlate({
   );
 }
 
-/** Glyph and title plate on one line, however the card around them is built. */
 function ServiceHeading({
   service,
   size = "md",
@@ -213,7 +212,6 @@ export function ServiceCard({
   );
 }
 
-/** The half-and-half treatment for the two flagship bays. */
 export function ServiceDetail({
   service,
   flip = false,
@@ -278,14 +276,13 @@ export function ServiceDetail({
   );
 }
 
-/** The wide, shallow row used down the rest of the forecourt. */
 export function ServiceRow({ service }: { service: Service }) {
   return (
     <article
       id={service.slug}
       className="card-base card-hover relative isolate scroll-mt-28 overflow-hidden sm:flex"
     >
-      <DotField className="hidden sm:block [mask-image:linear-gradient(90deg,transparent_32%,black_43%,transparent_60%)]" />
+      <DotField className="hidden sm:block mask-[linear-gradient(90deg,transparent_32%,black_43%,transparent_60%)]" />
 
       <ServicePhoto
         service={service}

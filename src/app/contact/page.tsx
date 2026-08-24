@@ -70,7 +70,7 @@ export default function ContactPage() {
                     <row.icon aria-hidden="true" />
                   </IconChip>
                   <div className="min-w-0">
-                    <dt className="font-display text-[0.72rem] font-bold tracking-[0.1em] text-ink-3 uppercase">
+                    <dt className="font-display text-[0.72rem] font-bold tracking-widest text-ink-3 uppercase">
                       {row.label}
                     </dt>
                     <dd className="mt-1">
