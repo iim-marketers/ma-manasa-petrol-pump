@@ -54,8 +54,10 @@
   --radius-pill: 999px;
 
   --shadow-e1: 0 1px 2px rgb(16 29 43 / 0.05), 0 1px 3px rgb(16 29 43 / 0.04);
-  --shadow-e2: 0 2px 4px rgb(16 29 43 / 0.04), 0 10px 24px -14px rgb(16 29 43 / 0.22);
-  --shadow-e3: 0 4px 8px rgb(16 29 43 / 0.05), 0 20px 40px -20px rgb(16 29 43 / 0.28);
+  --shadow-e2:
+    0 2px 4px rgb(16 29 43 / 0.04), 0 10px 24px -14px rgb(16 29 43 / 0.22);
+  --shadow-e3:
+    0 4px 8px rgb(16 29 43 / 0.05), 0 20px 40px -20px rgb(16 29 43 / 0.28);
 
   /* Layout rhythm */
   --spacing-nav: 4.5rem;
@@ -185,10 +187,6 @@
   }
 }
 
-/* --- Type scale: sentence case, corporate, no shouting ---
-   Declared with @utility, not @layer components, so they can be used with
-   variants (md:t-h2, lg:t-display). Plain classes in @layer components are
-   invisible to Tailwind's variant system and md:* would emit nothing. */
 @utility t-display {
   font-size: clamp(2.1rem, 4.4vw, 3.35rem);
   font-weight: 800;
@@ -215,6 +213,15 @@
   font-size: clamp(1rem, 1.35vw, 1.09rem);
   line-height: 1.68;
   max-width: 62ch;
+}
+
+@utility curve-left {
+  border-radius: var(--curve, 3rem) 0 0 var(--curve, 3rem) / 50% 0 0 50%;
+}
+
+/* The same sweep mirrored, for the layouts that stand the photo on the left. */
+@utility curve-right {
+  border-radius: 0 var(--curve, 3rem) var(--curve, 3rem) 0 / 0 50% 50% 0;
 }
 
 @utility t-eyebrow {

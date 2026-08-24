@@ -1,8 +1,3 @@
-/**
- * Single source of truth for everything the dealership needs to edit.
- * Phone, email and coordinates are placeholders — replace before publishing.
- */
-
 export const site = {
   name: "Ma Manasa Auto Fuel Service",
   shortName: "Ma Manasa Auto Fuel",
@@ -15,7 +10,7 @@ export const site = {
   phoneHref: "tel:+918100221804",
   altPhone: "+91-9831057070",
   altPhoneHref: "tel:+919831057070",
-  email: "XXXXX@example.com",
+  email: "",
   hours: "Open 24 hours",
   hoursNote: "All seven days, including holidays",
   bengali: "আপনার যাত্রা শুভ হোক",
@@ -83,29 +78,16 @@ export const rates = [
   },
 ] as const;
 
-/**
- * The pump's own photographs. Every image on the site comes from this set —
- * drop new shots into `public/new-images/` and point a key here at the new
- * file to swap one out everywhere it is used.
- */
 const photoDir = "/new-images";
 
 export const photos = {
-  /** Wide view from the entry: the full canopy, both islands and the building. */
   forecourt: `${photoDir}/Forecourt-3.png`,
-  /** Under the canopy — islands 1 and 2, the HP tanker unloading, bikes queued. */
   canopy: `${photoDir}/Forecourt-1.png`,
-  /** The canopy beside the station building: lube display and solar roof. */
   building: `${photoDir}/Forecourt-2.png`,
-  /** The Power 100 / Power 95 dispenser with the meter facing the customer. */
   powerGrades: `${photoDir}/power-100-95.png`,
-  /** The HP CNG dispenser on its own bay. */
   cng: `${photoDir}/CNG.png`,
-  /** The HP e-Charge electric vehicle charging station. */
   evCharge: `${photoDir}/HP-Echarge.png`,
-  /** The covered air point beside the forecourt. */
   air: `${photoDir}/Air-pressure.png`,
-  /** The PUC — smoke test — booth at the edge of the forecourt. */
   puc: `${photoDir}/PUC.png`,
 } as const;
 
@@ -120,7 +102,6 @@ export type ServiceIcon =
   | "droplet"
   | "file";
 
-/** Services are grouped so each block of the page has one clear subject. */
 export type ServiceGroup = "fuel" | "alt" | "forecourt";
 
 export type Service = {
@@ -134,11 +115,8 @@ export type Service = {
   icon: ServiceIcon;
   image: string;
   imageAlt: string;
-  /** CSS object-position, when two services share one photograph. */
   imagePosition?: string;
-  /** Gets the large treatment — a half-width photo panel rather than a card. */
   featured?: boolean;
-  /** Not open yet — the card carries a "coming soon" marker. */
   comingSoon?: boolean;
   details: string[];
 };
@@ -211,7 +189,7 @@ export const services: Service[] = [
     short: "Higher-octane petrol with a detergent additive pack.",
     body: "Higher-octane petrol with a detergent additive pack — smoother idle, cleaner injectors and a noticeable difference on engines that have covered some distance.",
     tag: "Premium grade",
-    accent: "#C8901A",
+    accent: "#E1251B",
     icon: "zap",
     image: photos.powerGrades,
     imageAlt: "The Power 95 nozzle and meter on the Power dispenser",
@@ -233,7 +211,7 @@ export const services: Service[] = [
     short: "Our top performance grade for high-compression engines.",
     body: "Our top performance grade, for high-compression engines and anyone who simply wants the best fill on the board. Stocked year round, not just on request.",
     tag: "Top of the board",
-    accent: "#8A4B12",
+    accent: "#0B4F9E",
     icon: "flame",
     image: photos.powerGrades,
     imageAlt: "The Power 100 nozzle and meter on the Power dispenser",
@@ -624,7 +602,6 @@ export const reviewSummary = {
   rating: 4.6,
   count: 128,
   source: "Google reviews",
-  /** Set false once real reviews replace the drafted ones below. */
   sample: true,
 } as const;
 

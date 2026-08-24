@@ -6,7 +6,13 @@ import { HpLockup } from "@/components/hp-logo";
 import { LinkButton } from "@/components/link-button";
 import { LogoMark } from "@/components/logo";
 import { ScrollToTop } from "@/components/scroll-to-top";
-import { nav, outletCategories, paymentMethods, services, site } from "@/lib/site";
+import {
+  nav,
+  outletCategories,
+  paymentMethods,
+  services,
+  site,
+} from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -35,29 +41,38 @@ export function SiteFooter() {
                   </span>
                 ))}
               </ContactRow>
-              <ContactRow icon={Phone}>
-                <a href={site.phoneHref} className="hover:text-white">
-                  {site.phone}
-                </a>
-                <a
-                  href={site.altPhoneHref}
-                  className="mt-0.5 block hover:text-white"
-                >
-                  {site.altPhone}
-                </a>
-              </ContactRow>
-              <ContactRow icon={Mail}>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="break-all hover:text-white"
-                >
-                  {site.email}
-                </a>
-              </ContactRow>
-              <ContactRow icon={Clock}>
-                {site.hours}
-                <span className="block text-brand-200">{site.hoursNote}</span>
-              </ContactRow>
+
+              {site.phone && site.altPhone && (
+                <ContactRow icon={Phone}>
+                  <a href={site.phoneHref} className="hover:text-white">
+                    {site.phone}
+                  </a>
+                  <a
+                    href={site.altPhoneHref}
+                    className="mt-0.5 block hover:text-white"
+                  >
+                    {site.altPhone}
+                  </a>
+                </ContactRow>
+              )}
+
+              {site.email && (
+                <ContactRow icon={Mail}>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="break-all hover:text-white"
+                  >
+                    {site.email}
+                  </a>
+                </ContactRow>
+              )}
+
+              {site.hours && (
+                <ContactRow icon={Clock}>
+                  {site.hours}
+                  <span className="block text-brand-200">{site.hoursNote}</span>
+                </ContactRow>
+              )}
             </ul>
           </div>
 
@@ -143,7 +158,8 @@ export function SiteFooter() {
               on the forecourt is final.
             </p>
           </div>
-          <ScrollToTop />
+
+          <ScrollToTop className="self-start" />
         </div>
 
         <div className="mt-8 flex flex-wrap justify-between gap-3 border-t border-white/12 pt-6 text-[0.78rem] text-brand-200">

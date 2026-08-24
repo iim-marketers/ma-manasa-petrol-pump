@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock, CreditCard, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, CreditCard, MapPin, Phone } from "lucide-react";
 
 import { Container, Section, SectionHead } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";
@@ -29,13 +29,13 @@ const rows = [
     note: site.altPhone,
     href: site.phoneHref,
   },
-  {
-    icon: Mail,
-    label: "Email",
-    value: site.email,
-    note: "Add your email before publishing",
-    href: `mailto:${site.email}`,
-  },
+  // {
+  //   icon: Mail,
+  //   label: "Email",
+  //   value: site.email,
+  //   note: "Add your email before publishing",
+  //   href: `mailto:${site.email}`,
+  // },
   { icon: Clock, label: "Hours", value: site.hours, note: site.hoursNote },
   {
     icon: CreditCard,
@@ -53,7 +53,7 @@ export default function ContactPage() {
         eyebrow="Get in touch"
         title={`Pull in at ${site.locality}`}
         lede={`We are on the ${site.highway} stretch at ${site.locality}, close to Kalyani More. Entry from both directions of the highway, and somebody at the island whatever the hour.`}
-        image={photos.building}
+        image={photos.canopy}
         imageAlt=""
       />
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
                     <row.icon aria-hidden="true" />
                   </IconChip>
                   <div className="min-w-0">
-                    <dt className="font-display text-[0.72rem] font-bold tracking-[0.1em] text-ink-3 uppercase">
+                    <dt className="font-display text-[0.72rem] font-bold tracking-widest text-ink-3 uppercase">
                       {row.label}
                     </dt>
                     <dd className="mt-1">
