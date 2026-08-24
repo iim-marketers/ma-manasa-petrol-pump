@@ -53,7 +53,7 @@ export default function ContactPage() {
         eyebrow="Get in touch"
         title={`Pull in at ${site.locality}`}
         lede={`We are on the ${site.highway} stretch at ${site.locality}, close to Kalyani More. Entry from both directions of the highway, and somebody at the island whatever the hour.`}
-        image={photos.building}
+        image={photos.canopy}
         imageAlt=""
       />
 
