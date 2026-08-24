@@ -83,6 +83,7 @@ export function Hero() {
               external
               variant="flame"
               size="pill-lg"
+              className="hidden md:inline-flex"
             >
               <Navigation aria-hidden="true" />
               Get directions

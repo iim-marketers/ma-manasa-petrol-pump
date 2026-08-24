@@ -58,8 +58,8 @@ export function SiteHeader() {
             }}
           >
             <LogoMark size={40} />
-            <span className="min-w-0">
-              <span className="block truncate font-display text-[1rem] leading-tight font-extrabold tracking-[-0.025em] text-ink">
+            <span className="max-w-52 md:max-w-full">
+              <span className="block truncate font-display text-[1rem] leading-tight font-extrabold tracking-tight text-ink">
                 {site.name}
               </span>
               <span className="block truncate text-[0.72rem] text-ink-2">
@@ -86,8 +86,6 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          {/* The page links live in the bottom tab bar on small screens, so the
-              header keeps only the two actions a driver actually needs. */}
           <LinkButton
             href={site.phoneHref}
             variant="soft"
@@ -103,7 +101,7 @@ export function SiteHeader() {
             external
             variant="flame"
             size="pill-sm"
-            className="px-3 sm:px-4"
+            className=" hidden sm:flex  px-3 sm:px-4"
             aria-label="Get directions"
           >
             <Navigation aria-hidden="true" />
