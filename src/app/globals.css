@@ -187,10 +187,6 @@
   }
 }
 
-/* --- Type scale: sentence case, corporate, no shouting ---
-   Declared with @utility, not @layer components, so they can be used with
-   variants (md:t-h2, lg:t-display). Plain classes in @layer components are
-   invisible to Tailwind's variant system and md:* would emit nothing. */
 @utility t-display {
   font-size: clamp(2.1rem, 4.4vw, 3.35rem);
   font-weight: 800;
@@ -219,10 +215,6 @@
   max-width: 62ch;
 }
 
-/* The shallow arc a service-card photo panel is cut to — a large elliptical
-   left edge, so the picture leans into the copy instead of butting against it.
-   `--curve` sets how far the bulge reaches; the vertical radius is always half
-   the panel, so the two corner arcs meet and read as one continuous sweep. */
 @utility curve-left {
   border-radius: var(--curve, 3rem) 0 0 var(--curve, 3rem) / 50% 0 0 50%;
 }

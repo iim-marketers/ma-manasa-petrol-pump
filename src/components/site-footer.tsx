@@ -41,29 +41,38 @@ export function SiteFooter() {
                   </span>
                 ))}
               </ContactRow>
-              <ContactRow icon={Phone}>
-                <a href={site.phoneHref} className="hover:text-white">
-                  {site.phone}
-                </a>
-                <a
-                  href={site.altPhoneHref}
-                  className="mt-0.5 block hover:text-white"
-                >
-                  {site.altPhone}
-                </a>
-              </ContactRow>
-              <ContactRow icon={Mail}>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="break-all hover:text-white"
-                >
-                  {site.email}
-                </a>
-              </ContactRow>
-              <ContactRow icon={Clock}>
-                {site.hours}
-                <span className="block text-brand-200">{site.hoursNote}</span>
-              </ContactRow>
+
+              {site.phone && site.altPhone && (
+                <ContactRow icon={Phone}>
+                  <a href={site.phoneHref} className="hover:text-white">
+                    {site.phone}
+                  </a>
+                  <a
+                    href={site.altPhoneHref}
+                    className="mt-0.5 block hover:text-white"
+                  >
+                    {site.altPhone}
+                  </a>
+                </ContactRow>
+              )}
+
+              {site.email && (
+                <ContactRow icon={Mail}>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="break-all hover:text-white"
+                  >
+                    {site.email}
+                  </a>
+                </ContactRow>
+              )}
+
+              {site.hours && (
+                <ContactRow icon={Clock}>
+                  {site.hours}
+                  <span className="block text-brand-200">{site.hoursNote}</span>
+                </ContactRow>
+              )}
             </ul>
           </div>
 

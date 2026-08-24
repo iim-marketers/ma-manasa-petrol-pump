@@ -29,13 +29,13 @@ const rows = [
     note: site.altPhone,
     href: site.phoneHref,
   },
-  {
-    icon: Mail,
-    label: "Email",
-    value: site.email,
-    note: "Add your email before publishing",
-    href: `mailto:${site.email}`,
-  },
+  // {
+  //   icon: Mail,
+  //   label: "Email",
+  //   value: site.email,
+  //   note: "Add your email before publishing",
+  //   href: `mailto:${site.email}`,
+  // },
   { icon: Clock, label: "Hours", value: site.hours, note: site.hoursNote },
   {
     icon: CreditCard,

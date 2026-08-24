@@ -174,6 +174,8 @@ export function ServiceCard({
 }) {
   const { lead, tail } = splitSummary(service.short);
 
+  console.log(service.short, lead, tail);
+
   return (
     <article
       className={cn(
@@ -196,15 +198,10 @@ export function ServiceCard({
         <div className="relative z-2 flex flex-1 flex-col items-start gap-1 lg:gap-4 p-5 @md:order-1 @md:p-7 @md:pr-6">
           <ServiceHeading service={service} />
 
-          <p className="pt-1 @md:mt-auto">
-            <span className="block font-display text-[1.15rem] font-extrabold tracking-tight text-ink @md:text-[1.45rem]">
-              {lead}
+          <p className="pt-1 md:mt-auto">
+            <span className="block font-display text-[1rem] font-medium tracking-tight text-ink">
+              {service.short}
             </span>
-            {tail ? (
-              <span className="mt-1 block text-[0.92rem] leading-relaxed text-ink-2 @md:text-[1.02rem]">
-                {tail}
-              </span>
-            ) : null}
           </p>
         </div>
       </div>

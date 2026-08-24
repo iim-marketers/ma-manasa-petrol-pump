@@ -10,7 +10,7 @@ export const site = {
   phoneHref: "tel:+918100221804",
   altPhone: "+91-9831057070",
   altPhoneHref: "tel:+919831057070",
-  email: "XXXXX@example.com",
+  email: "",
   hours: "Open 24 hours",
   hoursNote: "All seven days, including holidays",
   bengali: "আপনার যাত্রা শুভ হোক",
