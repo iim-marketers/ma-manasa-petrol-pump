@@ -9,7 +9,7 @@ import { Photo } from "@/components/photo";
 // import { PriceStrip } from "@/components/price-strip";
 import { QuickAccess } from "@/components/quick-access";
 import { Reveal } from "@/components/reveal";
-import { ReviewBand } from "@/components/review-band";
+// import { ReviewBand } from "@/components/review-band";
 import { ServiceCard, ServiceDetail } from "@/components/service-cards";
 
 import { gallery, servicesInGroup } from "@/lib/site";
@@ -23,7 +23,7 @@ export default function HomePage() {
       <ProductSection />
       <QuickAccess />
       <GallerySection />
-      <ReviewBand />
+      {/* <ReviewBand /> */}
       <LocateBand />
     </>
   );
