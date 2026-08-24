@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock, CreditCard, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, CreditCard, MapPin, Phone } from "lucide-react";
 
 import { Container, Section, SectionHead } from "@/components/container";
 import { EnquiryForm } from "@/components/enquiry-form";

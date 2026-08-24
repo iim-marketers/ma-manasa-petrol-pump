@@ -6,37 +6,6 @@ import { Photo } from "@/components/photo";
 import type { Service } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/* ---------------- Copy ---------------- */
-
-const QUALIFIERS = new Set([
-  "with",
-  "for",
-  "from",
-  "on",
-  "at",
-  "in",
-  "to",
-  "—",
-]);
-
-function splitSummary(text: string) {
-  const words = text.split(" ");
-
-  // Start at 2 so the bold line is never a single word.
-  for (let i = 2; i < words.length - 1; i += 1) {
-    if (!QUALIFIERS.has(words[i].toLowerCase())) continue;
-
-    return {
-      lead: words.slice(0, i).join(" "),
-      // A dash is a break, not a word — it would read as a stray glyph at the
-      // head of the second line.
-      tail: words.slice(words[i] === "—" ? i + 1 : i).join(" "),
-    };
-  }
-
-  return { lead: text, tail: "" };
-}
-
 /** "HP Power 95" → a "HP Power" plate over a "95" plate. */
 function splitTitle(title: string) {
   const graded = title.match(/^(.*\S)\s+(\d+)$/);
@@ -53,7 +22,7 @@ function DotField({ className }: { className?: string }) {
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(rgb(11_87_171/0.16)_1px,transparent_1.2px)] [background-size:12px_12px]",
+        "pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(rgb(11_87_171/0.16)_1px,transparent_1.2px)] bg-size-[12px_12px]",
         className,
       )}
     />
@@ -172,10 +141,6 @@ export function ServiceCard({
   service: Service;
   className?: string;
 }) {
-  const { lead, tail } = splitSummary(service.short);
-
-  console.log(service.short, lead, tail);
-
   return (
     <article
       className={cn(
