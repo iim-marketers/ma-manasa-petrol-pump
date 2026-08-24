@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
 import { Container, Section, SectionHead } from "@/components/container";
-import { CtaBand } from "@/components/cta-band";
 import { Hero } from "@/components/hero";
 import { LinkButton } from "@/components/link-button";
 import { LocateBand } from "@/components/locate-band";
@@ -15,11 +14,6 @@ import { ServiceCard, ServiceDetail } from "@/components/service-cards";
 
 import { gallery, servicesInGroup } from "@/lib/site";
 
-/**
- * Section order mirrors the HP dealer listing the client pointed at — banner,
- * outlet card, rates, offers, products, amenities, timings, quick links,
- * gallery, reviews, map — built as a clean retail UI rather than a copy of it.
- */
 export default function HomePage() {
   return (
     <>
@@ -31,7 +25,6 @@ export default function HomePage() {
       <GallerySection />
       <ReviewBand />
       <LocateBand />
-      {/* <CtaBand /> */}
     </>
   );
 }

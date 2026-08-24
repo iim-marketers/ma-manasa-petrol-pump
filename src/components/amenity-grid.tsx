@@ -3,10 +3,6 @@ import { Reveal } from "@/components/reveal";
 import { amenities } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/**
- * The amenity board. The reference lists these as a run-on line of text; a
- * grid with an icon each is the same information, findable at a glance.
- */
 export function AmenityGrid({
   tone = "light",
   className,

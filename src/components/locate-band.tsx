@@ -6,11 +6,6 @@ import { MapEmbed } from "@/components/map-embed";
 import { Reveal } from "@/components/reveal";
 import { nearby, site } from "@/lib/site";
 
-/**
- * Locate us. The reference closes on a map plus a stack of nearby outlets;
- * here the stack is the landmarks a driver actually navigates by on this
- * stretch, each with the road it sits on.
- */
 export function LocateBand() {
   return (
     <Section tone="surface" id="locate" className="scroll-mt-24">

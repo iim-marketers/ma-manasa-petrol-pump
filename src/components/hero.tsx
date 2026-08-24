@@ -16,7 +16,6 @@ const proof = [
 export function Hero() {
   return (
     <section className="wash-brand relative isolate overflow-hidden text-white">
-      {/* The forecourt runs full-bleed behind the copy. */}
       <Image
         src={photos.forecourt}
         alt={`The forecourt at ${site.name}, seen from the ${site.highway} entry`}
@@ -58,7 +57,7 @@ export function Hero() {
           </p>
 
           <ul
-            className="animate-fade-up mt-7 grid max-w-[40rem] gap-x-6 gap-y-2.5 sm:grid-cols-2"
+            className="animate-fade-up mt-7 grid max-w-160 gap-x-6 gap-y-2.5 sm:grid-cols-2"
             style={{ animationDelay: "0.2s" }}
           >
             {proof.map((item) => (

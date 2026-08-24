@@ -5,16 +5,11 @@ import { IconChip } from "@/components/icons";
 import { LinkButton } from "@/components/link-button";
 import { outletCategories, paymentMethods, site } from "@/lib/site";
 
-/**
- * The outlet card the HP dealer listings put under the banner. It sits half
- * over the hero band so the two read as one unit rather than as two stacked
- * strips.
- */
 export function OutletCard() {
   return (
     <div className="relative z-10 -mt-8 lg:-mt-12">
       <Container>
-        <div className="card-base overflow-hidden shadow-[var(--shadow-e3)]">
+        <div className="card-base overflow-hidden shadow-(--shadow-e3)">
           <div className="grid gap-6 p-6 sm:grid-cols-2 sm:p-8 lg:grid-cols-4 lg:gap-8">
             <Cell icon={MapPin} label="Address">
               {site.addressLines.map((line) => (
@@ -109,7 +104,7 @@ function Cell({
         <Icon aria-hidden="true" />
       </IconChip>
       <div className="min-w-0">
-        <span className="block font-display text-[0.72rem] font-bold tracking-[0.1em] text-ink-3 uppercase">
+        <span className="block font-display text-[0.72rem] font-bold tracking-widest text-ink-3 uppercase">
           {label}
         </span>
         <div className="mt-1.5 text-[0.88rem] leading-relaxed text-ink-2">

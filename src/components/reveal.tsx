@@ -4,13 +4,6 @@ import { useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/**
- * Fades content up as it scrolls into view. The visible class is toggled on
- * the node directly — this is a purely presentational flag with no other
- * consumers, so it does not need to round-trip through React state. Content
- * is shown immediately when IntersectionObserver is missing or motion is
- * reduced.
- */
 export function Reveal({
   children,
   className,
@@ -28,7 +21,9 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (reduced || !("IntersectionObserver" in window)) {
       node.classList.add("reveal-in");
       return;

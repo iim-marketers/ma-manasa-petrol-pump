@@ -126,7 +126,7 @@ export function ServiceRow({ service }: { service: Service }) {
         position={service.imagePosition}
         rounded="none"
         sizes="(max-width: 640px) 100vw, 40vw"
-        className="h-48 shrink-0 sm:h-auto sm:w-[38%] sm:min-w-[15rem]"
+        className="h-48 shrink-0 sm:h-auto sm:w-[38%] sm:min-w-60"
       />
 
       <div className="flex-1 p-6 sm:p-7">

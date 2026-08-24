@@ -51,8 +51,6 @@ export function EnquiryForm({ className }: { className?: string }) {
       return;
     }
 
-    // Demo only — wire this to an API route, email service or WhatsApp
-    // before going live.
     setSent(
       `Enquiry noted, ${name.split(" ")[0]}. We will call you back on ${phone}.`,
     );
@@ -63,18 +61,13 @@ export function EnquiryForm({ className }: { className?: string }) {
   }
 
   return (
-    <div
-      className={cn(
-        "card-base p-6 sm:p-8",
-        className,
-      )}
-    >
+    <div className={cn("card-base p-6 sm:p-8", className)}>
       <h3 className="font-display text-[1.32rem] font-extrabold tracking-[-0.02em]">
         Send an enquiry
       </h3>
       <p className="mt-1.5 mb-6 text-[0.89rem] text-ink-2">
-        Bulk diesel, fleet accounts, PUC timings or anything else — tell us what you need
-        and we will call you back.
+        Bulk diesel, fleet accounts, PUC timings or anything else — tell us what
+        you need and we will call you back.
       </p>
 
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
@@ -94,7 +87,10 @@ export function EnquiryForm({ className }: { className?: string }) {
               className={fieldClass}
             />
             {errors.name ? (
-              <p id="name-error" className="mt-1.5 text-[0.78rem] font-medium text-hp-red">
+              <p
+                id="name-error"
+                className="mt-1.5 text-[0.78rem] font-medium text-hp-red"
+              >
                 {errors.name}
               </p>
             ) : null}
@@ -116,7 +112,10 @@ export function EnquiryForm({ className }: { className?: string }) {
               className={fieldClass}
             />
             {errors.phone ? (
-              <p id="phone-error" className="mt-1.5 text-[0.78rem] font-medium text-hp-red">
+              <p
+                id="phone-error"
+                className="mt-1.5 text-[0.78rem] font-medium text-hp-red"
+              >
                 {errors.phone}
               </p>
             ) : null}
@@ -127,8 +126,14 @@ export function EnquiryForm({ className }: { className?: string }) {
           <Label htmlFor="topic" className={labelClass}>
             What do you need?
           </Label>
-          <Select value={topic} onValueChange={(value) => setTopic(String(value))}>
-            <SelectTrigger id="topic" className={cn(fieldClass, "justify-between")}>
+          <Select
+            value={topic}
+            onValueChange={(value) => setTopic(String(value))}
+          >
+            <SelectTrigger
+              id="topic"
+              className={cn(fieldClass, "justify-between")}
+            >
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -164,7 +169,10 @@ export function EnquiryForm({ className }: { className?: string }) {
             role="status"
             className="flex items-start gap-2.5 rounded-xl bg-brand-600 px-4 py-3.5 text-[0.89rem] font-semibold text-white"
           >
-            <CheckCircle2 className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+            <CheckCircle2
+              className="mt-0.5 size-4 shrink-0"
+              aria-hidden="true"
+            />
             {sent}
           </p>
         ) : null}

@@ -24,10 +24,6 @@ import {
 import type { AmenityIcon, ServiceIcon } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/**
- * One lookup for every icon named in `site.ts`. Keeping it here means the data
- * file stays free of component imports and the two icon sets cannot drift.
- */
 const serviceIcons: Record<ServiceIcon, React.ElementType> = {
   fuel: Fuel,
   gauge: Gauge,

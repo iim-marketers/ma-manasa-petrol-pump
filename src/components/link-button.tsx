@@ -12,11 +12,6 @@ type LinkButtonProps = VariantProps<typeof buttonVariants> & {
   "aria-label"?: string;
 };
 
-/**
- * A Button rendered as an anchor. Base UI needs `nativeButton={false}` when the
- * rendered element is not a real <button>, otherwise it warns and drops the
- * native semantics.
- */
 export function LinkButton({
   href,
   external = false,

@@ -12,11 +12,6 @@ const icons: Record<OfferIcon, React.ElementType> = {
   plug: Plug,
 };
 
-/**
- * Programmes and offers — the promo rail the HP dealer sites run as a
- * carousel. A static grid instead: four cards all visible beats four cards
- * one at a time behind arrows.
- */
 export function OfferRail() {
   return (
     <Section tone="muted">

@@ -48,7 +48,7 @@ export function HpLockup({ className }: { className?: string }) {
     >
       <HpLogo size={38} alt="" />
       <span className="leading-[1.18]">
-        <span className="block font-display text-[0.72rem] font-bold tracking-[0.1em] text-brand-700 uppercase">
+        <span className="block font-display text-[0.72rem] font-bold tracking-widest text-brand-700 uppercase">
           Authorised Dealer
         </span>
         <span className="block text-[0.66rem] font-medium text-ink-2">

@@ -4,11 +4,6 @@ import { Container } from "@/components/container";
 import { rates, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/**
- * Today's rates, as a row of cards. This replaces the old LED board: prices
- * are the single most-looked-up thing on a pump listing, so they read best as
- * plain, large, well-spaced figures rather than as an effect.
- */
 export function PriceStrip() {
   return (
     <section id="rates" className="scroll-mt-28 bg-surface pt-14 sm:pt-16">
@@ -69,11 +64,16 @@ export function PriceStrip() {
         </ul>
 
         <p className="mt-4 flex items-start gap-2.5 rounded-xl bg-surface-2 px-4 py-3 text-[0.82rem] leading-relaxed text-ink-2">
-          <Info className="mt-0.5 size-4 shrink-0 text-brand-500" aria-hidden="true" />
+          <Info
+            className="mt-0.5 size-4 shrink-0 text-brand-500"
+            aria-hidden="true"
+          />
           <span>
-            <b className="font-semibold text-ink">Sample figures for this draft.</b>{" "}
-            Rates move with the daily revision — replace them with the pump&rsquo;s
-            board, or ring{" "}
+            <b className="font-semibold text-ink">
+              Sample figures for this draft.
+            </b>{" "}
+            Rates move with the daily revision — replace them with the
+            pump&rsquo;s board, or ring{" "}
             <a
               href={site.phoneHref}
               className="font-semibold text-brand-600 underline-offset-4 hover:underline"

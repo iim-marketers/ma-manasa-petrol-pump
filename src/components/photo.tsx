@@ -2,11 +2,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-/**
- * Photo tile. Fills its container, so the parent must set a height or an
- * aspect ratio. The caption sits in a soft gradient at the foot of the frame
- * and is always visible — a caption you have to hover to read is decoration.
- */
 export function Photo({
   src,
   alt,

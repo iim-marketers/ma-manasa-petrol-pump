@@ -19,11 +19,6 @@ import { scrollToTop } from "@/lib/scroll";
 import { nav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/**
- * Two-tier header, the shape the HP dealer listings use: a thin dark utility
- * strip carrying address, phone and open status, and a white bar under it with
- * the mark, the menu and the one action that matters.
- */
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -66,8 +61,6 @@ export function SiteHeader() {
             className="mr-auto flex min-w-0 items-center gap-3"
             aria-label={`${site.name}, home`}
             onClick={(event) => {
-              // Already home: the route never changes, so navigation is a no-op.
-              // Send the reader back to the top instead.
               if (pathname === "/") {
                 event.preventDefault();
                 scrollToTop();

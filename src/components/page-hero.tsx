@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ChevronRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 import { Container } from "@/components/container";
 import { site } from "@/lib/site";
