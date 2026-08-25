@@ -42,7 +42,7 @@ function ServicePlate({
     <h3 className="flex -skew-x-6 flex-col items-start font-display leading-none tracking-tight">
       <span
         className={cn(
-          "rounded-lg bg-brand-700 font-extrabold text-white",
+          "rounded-lg bg-red-700 font-extrabold text-white",
           size === "lg"
             ? "px-3.5 py-2 text-[1.1rem] md:text-[1.3rem]"
             : "px-2.5 py-1.5 text-[0.95rem] @md:px-3 @md:text-[1.1rem]",
